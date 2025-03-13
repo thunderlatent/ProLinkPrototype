@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的訂單 - 專才</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="iphone-frame">
+        <div class="dynamic-island"></div>
+        <div class="screen">
+            <!-- 頂部狀態欄 -->
+            <div class="status-bar">
+                <div class="status-bar-title">我的訂單</div>
+            </div>
+            
+            <!-- 內容區域 -->
+            <div class="content">
+                <!-- 訂單類型選擇 -->
+                <div style="display: flex; padding: 10px; border-bottom: 1px solid #eaeaea; background-color: #fff; position: sticky; top: 0; z-index: 10;">
+                    <a href="orders.html?status=all" style="flex: 1; text-align: center; padding: 8px; color: #1A7B8E; border-bottom: 2px solid #1A7B8E; font-weight: 600; text-decoration: none;">全部</a>
+                    <a href="orders.html?status=pending" style="flex: 1; text-align: center; padding: 8px; color: #8e8e93; text-decoration: none;">待確認</a>
+                    <a href="orders.html?status=ongoing" style="flex: 1; text-align: center; padding: 8px; color: #8e8e93; text-decoration: none;">進行中</a>
+                    <a href="orders.html?status=completed" style="flex: 1; text-align: center; padding: 8px; color: #8e8e93; text-decoration: none;">已完成</a>
+                </div>
+                
+                <!-- 訂單列表 -->
+                <div style="padding: 10px;">
+                    <!-- 訂單1 - 待確認 -->
+                    <div class="card" style="margin-bottom: 15px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                            <div style="font-weight: 600; color: #333;">基礎UI設計</div>
+                            <div class="order-status status-pending">待確認</div>
+                        </div>
+                        <div style="display: flex; margin-bottom: 15px;">
+                            <img src="images/avatars/avatar1.jpg" alt="專家頭像" class="avatar" style="width: 40px; height: 40px;">
+                            <div style="margin-left: 10px;">
+                                <div style="font-weight: 600;">李明哲</div>
+                                <div style="color: #666; font-size: 14px;">UI/UX 設計師</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; color: #666; font-size: 14px; margin-bottom: 15px;">
+                            <div>訂單編號: BK20230601001</div>
+                            <div>NT$3,000</div>
+                        </div>
+                        <div style="color: #666; font-size: 14px; margin-bottom: 15px;">
+                            預約時間: 2023年6月10日 10:00
+                        </div>
+                        <div style="display: flex; gap: 10px;">
+                            <button class="btn btn-secondary" style="flex: 1; font-size: 14px;">取消預約</button>
+                            <button class="btn" style="flex: 1; font-size: 14px;">聯絡專家</button>
+                        </div>
+                    </div>
+                    
+                    <!-- 訂單2 - 進行中 -->
+                    <div class="card" style="margin-bottom: 15px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                            <div style="font-weight: 600; color: #333;">網站UI/UX設計</div>
+                            <div class="order-status status-ongoing">進行中</div>
+                        </div>
+                        <div style="display: flex; margin-bottom: 15px;">
+                            <img src="images/avatars/avatar1.jpg" alt="專家頭像" class="avatar" style="width: 40px; height: 40px;">
+                            <div style="margin-left: 10px;">
+                                <div style="font-weight: 600;">李明哲</div>
+                                <div style="color: #666; font-size: 14px;">UI/UX 設計師</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; color: #666; font-size: 14px; margin-bottom: 15px;">
+                            <div>訂單編號: BK20230520003</div>
+                            <div>NT$15,000</div>
+                        </div>
+                        <div style="color: #666; font-size: 14px; margin-bottom: 15px;">
+                            開始日期: 2023年5月25日
+                        </div>
+                        <div style="margin-bottom: 15px;">
+                            <div style="font-size: 14px; margin-bottom: 5px;">項目進度</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 65%;"></div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-top: 5px;">
+                                <div style="font-size: 12px; color: #666;">設計中</div>
+                                <div style="font-size: 12px; color: #666;">65%</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 10px;">
+                            <button class="btn btn-secondary" style="flex: 1; font-size: 14px;">查看詳情</button>
+                            <button class="btn" style="flex: 1; font-size: 14px;">聯絡專家</button>
+                        </div>
+                    </div>
+                    
+                    <!-- 訂單3 - 已完成 -->
+                    <div class="card" style="margin-bottom: 15px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                            <div style="font-weight: 600; color: #333;">LOGO設計</div>
+                            <div class="order-status status-completed">已完成</div>
+                        </div>
+                        <div style="display: flex; margin-bottom: 15px;">
+                            <img src="images/avatars/avatar2.jpg" alt="專家頭像" class="avatar" style="width: 40px; height: 40px;">
+                            <div style="margin-left: 10px;">
+                                <div style="font-weight: 600;">林佳穎</div>
+                                <div style="color: #666; font-size: 14px;">平面設計師</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; color: #666; font-size: 14px; margin-bottom: 15px;">
+                            <div>訂單編號: BK20230410002</div>
+                            <div>NT$5,000</div>
+                        </div>
+                        <div style="color: #666; font-size: 14px; margin-bottom: 15px;">
+                            完成日期: 2023年4月20日
+                        </div>
+                        <div style="display: flex; gap: 10px;">
+                            <button class="btn btn-secondary" style="flex: 1; font-size: 14px;">查看評價</button>
+                            <button class="btn" style="flex: 1; font-size: 14px;">再次預約</button>
+                        </div>
+                    </div>
+                    
+                    <!-- 訂單4 - 已取消 -->
+                    <div class="card">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                            <div style="font-weight: 600; color: #333;">攝影服務</div>
+                            <div class="order-status status-cancelled">已取消</div>
+                        </div>
+                        <div style="display: flex; margin-bottom: 15px;">
+                            <img src="images/avatars/avatar3.jpg" alt="專家頭像" class="avatar" style="width: 40px; height: 40px;">
+                            <div style="margin-left: 10px;">
+                                <div style="font-weight: 600;">張志豪</div>
+                                <div style="color: #666; font-size: 14px;">攝影師</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; color: #666; font-size: 14px; margin-bottom: 15px;">
+                            <div>訂單編號: BK20230315004</div>
+                            <div>NT$3,500</div>
+                        </div>
+                        <div style="color: #666; font-size: 14px; margin-bottom: 15px;">
+                            取消日期: 2023年3月16日
+                        </div>
+                        <div style="display: flex; gap: 10px;">
+                            <button class="btn btn-secondary" style="flex: 1; font-size: 14px;">刪除訂單</button>
+                            <button class="btn" style="flex: 1; font-size: 14px;">重新預約</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 底部導航欄 -->
+            <div class="tab-bar">
+                <a href="index.html" class="tab-item">
+                    <i class="fas fa-home tab-icon"></i>
+                    <span>首頁</span>
+                </a>
+                <a href="explore.html" class="tab-item">
+                    <i class="fas fa-compass tab-icon"></i>
+                    <span>探索</span>
+                </a>
+                <a href="orders.html" class="tab-item active">
+                    <i class="fas fa-clipboard-list tab-icon"></i>
+                    <span>訂單</span>
+                </a>
+                <a href="messages.html" class="tab-item">
+                    <i class="fas fa-comment-alt tab-icon"></i>
+                    <span>訊息</span>
+                </a>
+                <a href="profile.html" class="tab-item">
+                    <i class="fas fa-user tab-icon"></i>
+                    <span>我的</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/main.js"></script>
+</body>
+</html> 

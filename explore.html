@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>探索 - 專才</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .explore-header {
+            padding-top: 15px;
+            background-color: #f2f2f7;
+            z-index: 5;
+            position: sticky;
+            top: 0;
+        }
+        .category-scroller {
+            display: flex;
+            overflow-x: auto;
+            padding: 15px 16px; /* 增加左右邊距 */
+            margin: 5px 0 15px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; /* Firefox */
+        }
+        .category-scroller::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Edge */
+        }
+        .category-item {
+            min-width: 80px;
+            height: 80px;
+            margin-right: 12px;
+            border-radius: 12px; /* 更符合iOS圓角 */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #ffffff; /* 更淺的背景 */
+            color: #000;
+            font-size: 13px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* 更細緻的陰影 */
+            position: relative;
+            overflow: hidden;
+        }
+        .category-item i {
+            font-size: 24px;
+            margin-bottom: 8px;
+            color: #007AFF; /* iOS藍色 */
+            position: relative;
+            z-index: 2;
+        }
+        .category-item .category-label {
+            position: relative;
+            z-index: 2;
+            font-weight: 500;
+        }
+        .category-item.active {
+            background-color: #007AFF; /* iOS藍色 */
+            color: white;
+        }
+        .category-item.active i {
+            color: white;
+        }
+        .expert-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px; /* 增加間距 */
+            padding: 0 16px; /* iOS標準側邊距 */
+            margin-top: 15px;
+        }
+        .expert-card {
+            background-color: #fff;
+            border-radius: 12px; /* 更符合iOS圓角 */
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* 更細緻的陰影 */
+        }
+        .expert-img {
+            width: 100%;
+            height: 130px; /* 增加高度 */
+            object-fit: cover;
+            display: block; /* 確保圖片正確顯示 */
+        }
+        .expert-info {
+            padding: 12px; /* 增加內邊距 */
+        }
+        .expert-name {
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: #000;
+            font-size: 15px;
+        }
+        .expert-title {
+            font-size: 13px;
+            color: #8e8e93; /* iOS次要文本顏色 */
+            margin-bottom: 6px;
+        }
+        .expert-rating {
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+            color: #FF9500; /* iOS橙色 */
+        }
+        .expert-rating i {
+            margin-right: 4px;
+        }
+        .expert-price {
+            font-size: 15px;
+            font-weight: 600;
+            color: #007AFF; /* iOS藍色 */
+            margin-top: 6px;
+            text-align: right;
+        }
+        .section-title {
+            padding: 0 16px; /* iOS標準側邊距 */
+            margin: 20px 0 12px;
+            font-size: 20px; /* 增大字體 */
+            font-weight: 600;
+            color: #000;
+        }
+        .view-all {
+            font-size: 15px;
+            color: #007AFF; /* iOS藍色 */
+            text-decoration: none;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="iphone-frame">
+        <div class="dynamic-island"></div>
+        <div class="screen">
+            <!-- 頂部狀態欄 -->
+            <div class="status-bar">
+                <div class="status-bar-title">探索專家</div>
+            </div>
+            
+            <!-- 內容區域 -->
+            <div class="content">
+                <div class="explore-header">
+                    <!-- 搜尋欄 -->
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="搜尋專家或服務...">
+                    </div>
+                    
+                    <!-- 類別導航 -->
+                    <h3 style="padding: 0 16px; margin: 15px 0 5px; font-size: 17px; color: #8e8e93;">服務類別</h3>
+                    <div class="category-scroller">
+                        <a href="#" class="category-item active">
+                            <i class="fas fa-star"></i>
+                            <div class="category-label">熱門</div>
+                        </a>
+                        <a href="#" class="category-item">
+                            <i class="fas fa-laptop-code"></i>
+                            <div class="category-label">設計開發</div>
+                        </a>
+                        <a href="#" class="category-item">
+                            <i class="fas fa-camera"></i>
+                            <div class="category-label">攝影視頻</div>
+                        </a>
+                        <a href="#" class="category-item">
+                            <i class="fas fa-language"></i>
+                            <div class="category-label">翻譯寫作</div>
+                        </a>
+                        <a href="#" class="category-item">
+                            <i class="fas fa-chart-line"></i>
+                            <div class="category-label">行銷策劃</div>
+                        </a>
+                        <a href="#" class="category-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <div class="category-label">教學輔導</div>
+                        </a>
+                        <a href="#" class="category-item">
+                            <i class="fas fa-briefcase"></i>
+                            <div class="category-label">商業諮詢</div>
+                        </a>
+                        <a href="#" class="category-item">
+                            <i class="fas fa-headphones"></i>
+                            <div class="category-label">音樂制作</div>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 精選專家 -->
+                <div>
+                    <div class="section-title">
+                        精選專家
+                        <a href="#" class="view-all">查看全部 <i class="fas fa-chevron-right" style="font-size: smaller;"></i></a>
+                    </div>
+                    
+                    <div class="expert-grid">
+                        <!-- 專家1 -->
+                        <a href="expert-detail.html" style="text-decoration: none; color: inherit;">
+                            <div class="expert-card">
+                                <img src="images/avatars/avatar1.jpg" alt="專家頭像" class="expert-img">
+                                <div class="expert-info">
+                                    <div class="expert-name">李明哲</div>
+                                    <div class="expert-title">UI/UX 設計師</div>
+                                    <div class="expert-rating">
+                                        <i class="fas fa-star"></i>
+                                        <span>4.8</span>
+                                    </div>
+                                    <div class="expert-price">NT$3,000起</div>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <!-- 專家2 -->
+                        <a href="expert-detail.html" style="text-decoration: none; color: inherit;">
+                            <div class="expert-card">
+                                <img src="images/avatars/avatar2.jpg" alt="專家頭像" class="expert-img">
+                                <div class="expert-info">
+                                    <div class="expert-name">林佳穎</div>
+                                    <div class="expert-title">品牌設計師</div>
+                                    <div class="expert-rating">
+                                        <i class="fas fa-star"></i>
+                                        <span>4.9</span>
+                                    </div>
+                                    <div class="expert-price">NT$5,000起</div>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <!-- 專家3 -->
+                        <a href="expert-detail.html" style="text-decoration: none; color: inherit;">
+                            <div class="expert-card">
+                                <img src="images/avatars/avatar3.jpg" alt="專家頭像" class="expert-img">
+                                <div class="expert-info">
+                                    <div class="expert-name">張志豪</div>
+                                    <div class="expert-title">攝影師</div>
+                                    <div class="expert-rating">
+                                        <i class="fas fa-star"></i>
+                                        <span>4.7</span>
+                                    </div>
+                                    <div class="expert-price">NT$2,500起</div>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <!-- 專家4 -->
+                        <a href="expert-detail.html" style="text-decoration: none; color: inherit;">
+                            <div class="expert-card">
+                                <img src="images/avatars/avatar4.jpg" alt="專家頭像" class="expert-img">
+                                <div class="expert-info">
+                                    <div class="expert-name">王美玲</div>
+                                    <div class="expert-title">英語教師</div>
+                                    <div class="expert-rating">
+                                        <i class="fas fa-star"></i>
+                                        <span>4.6</span>
+                                    </div>
+                                    <div class="expert-price">NT$800起/小時</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 近期熱門 -->
+                <h3 class="section-title">
+                    近期熱門服務
+                    <a href="#" class="view-all">查看全部 <i class="fas fa-chevron-right" style="font-size: 12px;"></i></a>
+                </h3>
+                
+                <div style="padding: 0 15px;">
+                    <!-- 服務1 -->
+                    <div style="background-color: #fff; border-radius: 10px; margin-bottom: 15px; padding: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        <div style="display: flex; margin-bottom: 10px;">
+                            <img src="images/avatars/avatar5.jpg" alt="專家頭像" class="avatar">
+                            <div style="margin-left: 10px;">
+                                <div style="font-weight: 600; color: #333;">陳俊宏</div>
+                                <div style="font-size: 12px; color: #666;">網站開發專家</div>
+                            </div>
+                            <div style="margin-left: auto; font-size: 12px; color: #FF7E45;">
+                                <i class="fas fa-star"></i>
+                                <span>4.8</span>
+                            </div>
+                        </div>
+                        <div style="font-weight: 600; margin-bottom: 5px; color: #333;">
+                            快速架設專業形象網站，三天內完成基礎版本
+                        </div>
+                        <div style="font-size: 14px; color: #666; margin-bottom: 10px;">
+                            包含RWD響應式設計，SEO基礎優化，最適合創業者和個人專業形象打造
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div style="font-size: 12px; color: #888;">
+                                <i class="fas fa-clock"></i>
+                                <span>7天內交付</span>
+                            </div>
+                            <div style="font-weight: 600; color: #FF7E45;">
+                                NT$15,000起
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 服務2 -->
+                    <div style="background-color: #fff; border-radius: 10px; margin-bottom: 15px; padding: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        <div style="display: flex; margin-bottom: 10px;">
+                            <img src="images/avatars/avatar6.jpg" alt="專家頭像" class="avatar">
+                            <div style="margin-left: 10px;">
+                                <div style="font-weight: 600; color: #333;">楊曉芬</div>
+                                <div style="font-size: 12px; color: #666;">行銷顧問</div>
+                            </div>
+                            <div style="margin-left: auto; font-size: 12px; color: #FF7E45;">
+                                <i class="fas fa-star"></i>
+                                <span>4.9</span>
+                            </div>
+                        </div>
+                        <div style="font-weight: 600; margin-bottom: 5px; color: #333;">
+                            社群媒體行銷策略規劃與執行
+                        </div>
+                        <div style="font-size: 14px; color: #666; margin-bottom: 10px;">
+                            量身打造FB、IG、LinkedIn有效行銷策略，提高品牌曝光與粉絲互動率
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div style="font-size: 12px; color: #888;">
+                                <i class="fas fa-clock"></i>
+                                <span>14天內交付</span>
+                            </div>
+                            <div style="font-weight: 600; color: #FF7E45;">
+                                NT$20,000起
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 底部導航欄 -->
+            <div class="tab-bar">
+                <a href="index.html" class="tab-item">
+                    <i class="fas fa-home tab-icon"></i>
+                    <span>首頁</span>
+                </a>
+                <a href="explore.html" class="tab-item active">
+                    <i class="fas fa-compass tab-icon"></i>
+                    <span>探索</span>
+                </a>
+                <a href="orders.html" class="tab-item">
+                    <i class="fas fa-clipboard-list tab-icon"></i>
+                    <span>訂單</span>
+                </a>
+                <a href="messages.html" class="tab-item">
+                    <i class="fas fa-comment-alt tab-icon"></i>
+                    <span>訊息</span>
+                </a>
+                <a href="profile.html" class="tab-item">
+                    <i class="fas fa-user tab-icon"></i>
+                    <span>我的</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/main.js"></script>
+</body>
+</html> 

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>訊息 - 專才</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="iphone-frame">
+        <div class="dynamic-island"></div>
+        <div class="screen">
+            <!-- 頂部狀態欄 -->
+            <div class="status-bar">
+                <div class="status-bar-title">訊息</div>
+            </div>
+            
+            <!-- 內容區域 -->
+            <div class="content">
+                <!-- 搜尋欄 -->
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="搜尋訊息...">
+                </div>
+                
+                <!-- 訊息列表 -->
+                <div style="margin-top: 5px;">
+                    <!-- 訊息1 - 未讀 -->
+                    <a href="chat.html?id=1" style="text-decoration: none; color: inherit;">
+                        <div class="message-item">
+                            <img src="images/avatars/avatar1.jpg" alt="專家頭像" class="avatar">
+                            <div style="flex: 1; margin-left: 15px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                                    <div style="font-weight: 600; color: #333;">李明哲</div>
+                                    <div style="color: #8e8e93; font-size: 13px;">10:30</div>
+                                </div>
+                                <div style="color: #333; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 250px;">
+                                    您好！我已經收到您的預約需求，想跟您確認一下設計風格的偏好...
+                                </div>
+                            </div>
+                            <div class="unread-badge"></div>
+                        </div>
+                    </a>
+                    
+                    <!-- 訊息2 - 未讀 -->
+                    <a href="chat.html?id=2" style="text-decoration: none; color: inherit;">
+                        <div class="message-item">
+                            <img src="images/avatars/avatar2.jpg" alt="專家頭像" class="avatar">
+                            <div style="flex: 1; margin-left: 15px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                                    <div style="font-weight: 600; color: #333;">林佳穎</div>
+                                    <div style="color: #8e8e93; font-size: 13px;">昨天</div>
+                                </div>
+                                <div style="color: #333; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 250px;">
+                                    LOGO初稿已經完成了，請查收郵件附件，有任何修改意見請告知...
+                                </div>
+                            </div>
+                            <div class="unread-badge"></div>
+                        </div>
+                    </a>
+                    
+                    <!-- 訊息3 -->
+                    <a href="chat.html?id=3" style="text-decoration: none; color: inherit;">
+                        <div class="message-item">
+                            <img src="images/avatars/avatar3.jpg" alt="專家頭像" class="avatar">
+                            <div style="flex: 1; margin-left: 15px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                                    <div style="font-weight: 600; color: #333;">張志豪</div>
+                                    <div style="color: #8e8e93; font-size: 13px;">3天前</div>
+                                </div>
+                                <div style="color: #666; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 250px;">
+                                    感謝您的評價！很高興能為您提供攝影服務，期待下次合作。
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <!-- 訊息4 -->
+                    <a href="chat.html?id=4" style="text-decoration: none; color: inherit;">
+                        <div class="message-item">
+                            <img src="images/avatars/avatar4.jpg" alt="專家頭像" class="avatar">
+                            <div style="flex: 1; margin-left: 15px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                                    <div style="font-weight: 600; color: #333;">王美玲</div>
+                                    <div style="color: #8e8e93; font-size: 13px;">上週</div>
+                                </div>
+                                <div style="color: #666; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 250px;">
+                                    下週二的英語課程已經安排好了，請問您有空參加嗎？
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <!-- 訊息5 -->
+                    <a href="chat.html?id=5" style="text-decoration: none; color: inherit;">
+                        <div style="display: flex; padding: 15px; background-color: #fff; border-bottom: 1px solid #eaeaea;">
+                            <img src="images/avatars/avatar5.jpg" alt="專家頭像" class="avatar">
+                            <div style="flex: 1; margin-left: 15px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                                    <div style="font-weight: 600; color: #333;">陳俊宏</div>
+                                    <div style="color: #8e8e93; font-size: 13px;">上週</div>
+                                </div>
+                                <div style="color: #666; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 250px;">
+                                    您好，關於您詢問的網站開發，我們可以安排時間詳細討論需求。
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <!-- 訊息6 -->
+                    <a href="chat.html?id=6" style="text-decoration: none; color: inherit;">
+                        <div style="display: flex; padding: 15px; background-color: #fff; border-bottom: 1px solid #eaeaea;">
+                            <img src="images/avatars/avatar6.jpg" alt="專家頭像" class="avatar">
+                            <div style="flex: 1; margin-left: 15px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                                    <div style="font-weight: 600; color: #333;">系統通知</div>
+                                    <div style="color: #8e8e93; font-size: 13px;">2週前</div>
+                                </div>
+                                <div style="color: #666; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 250px;">
+                                    歡迎使用專才平台！如有任何問題，可隨時聯繫客服。
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- 底部導航欄 -->
+            <div class="tab-bar">
+                <a href="index.html" class="tab-item">
+                    <i class="fas fa-home tab-icon"></i>
+                    <span>首頁</span>
+                </a>
+                <a href="explore.html" class="tab-item">
+                    <i class="fas fa-compass tab-icon"></i>
+                    <span>探索</span>
+                </a>
+                <a href="orders.html" class="tab-item">
+                    <i class="fas fa-clipboard-list tab-icon"></i>
+                    <span>訂單</span>
+                </a>
+                <a href="messages.html" class="tab-item active">
+                    <i class="fas fa-comment-alt tab-icon"></i>
+                    <span>訊息</span>
+                </a>
+                <a href="profile.html" class="tab-item">
+                    <i class="fas fa-user tab-icon"></i>
+                    <span>我的</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/main.js"></script>
+</body>
+</html> 

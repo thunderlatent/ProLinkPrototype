@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的資料 - 專才</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="iphone-frame">
+        <div class="dynamic-island"></div>
+        <div class="screen">
+            <!-- 頂部狀態欄 -->
+            <div class="status-bar">
+                <div class="status-bar-title">我的資料</div>
+            </div>
+            
+            <!-- 內容區域 -->
+            <div class="content">
+                <!-- 個人資料頭部 -->
+                <div class="profile-header">
+                    <img src="images/avatars/avatar6.jpg" alt="我的頭像" class="avatar avatar-large">
+                    <div class="profile-username">陳大偉</div>
+                    <div class="profile-email">david.chen@example.com</div>
+                    <button class="btn" style="margin-top: 15px; padding: 8px 20px; font-size: 14px;">編輯資料</button>
+                </div>
+                
+                <!-- 我的訂單 -->
+                <div class="card" style="margin-bottom: 15px;">
+                    <h3 style="margin-bottom: 15px; color: #333;">我的訂單</h3>
+                    <div style="display: flex; justify-content: space-between; text-align: center;">
+                        <a href="orders.html?status=pending" style="flex: 1; color: #333; text-decoration: none;">
+                            <div style="font-size: 24px; margin-bottom: 5px; color: #1A7B8E;">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div style="font-size: 14px;">待確認</div>
+                            <div style="background: #FF7E45; color: white; border-radius: 10px; font-size: 12px; padding: 2px 5px; display: inline-block; margin-top: 3px;">2</div>
+                        </a>
+                        <a href="orders.html?status=ongoing" style="flex: 1; color: #333; text-decoration: none;">
+                            <div style="font-size: 24px; margin-bottom: 5px; color: #1A7B8E;">
+                                <i class="fas fa-spinner"></i>
+                            </div>
+                            <div style="font-size: 14px;">進行中</div>
+                            <div style="background: #FF7E45; color: white; border-radius: 10px; font-size: 12px; padding: 2px 5px; display: inline-block; margin-top: 3px;">1</div>
+                        </a>
+                        <a href="orders.html?status=completed" style="flex: 1; color: #333; text-decoration: none;">
+                            <div style="font-size: 24px; margin-bottom: 5px; color: #1A7B8E;">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div style="font-size: 14px;">已完成</div>
+                        </a>
+                        <a href="orders.html?status=cancelled" style="flex: 1; color: #333; text-decoration: none;">
+                            <div style="font-size: 24px; margin-bottom: 5px; color: #1A7B8E;">
+                                <i class="fas fa-times-circle"></i>
+                            </div>
+                            <div style="font-size: 14px;">已取消</div>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 帳戶管理 -->
+                <h3 style="padding: 0 15px; margin-bottom: 5px; color: #8e8e93; font-size: 14px; font-weight: 500;">帳戶管理</h3>
+                <div class="profile-menu">
+                    <a href="#" class="menu-item" style="text-decoration: none;">
+                        <i class="fas fa-wallet menu-icon"></i>
+                        <div class="menu-text">我的錢包</div>
+                        <i class="fas fa-chevron-right menu-arrow"></i>
+                    </a>
+                    <a href="#" class="menu-item" style="text-decoration: none;">
+                        <i class="fas fa-heart menu-icon"></i>
+                        <div class="menu-text">收藏專家</div>
+                        <i class="fas fa-chevron-right menu-arrow"></i>
+                    </a>
+                    <a href="#" class="menu-item" style="text-decoration: none;">
+                        <i class="fas fa-address-card menu-icon"></i>
+                        <div class="menu-text">身份認證</div>
+                        <i class="fas fa-chevron-right menu-arrow"></i>
+                    </a>
+                    <a href="#" class="menu-item" style="text-decoration: none;">
+                        <i class="fas fa-shield-alt menu-icon"></i>
+                        <div class="menu-text">帳號安全</div>
+                        <i class="fas fa-chevron-right menu-arrow"></i>
+                    </a>
+                </div>
+                
+                <!-- 應用設定 -->
+                <h3 style="padding: 0 15px; margin: 15px 0 5px; color: #8e8e93; font-size: 14px; font-weight: 500;">應用設定</h3>
+                <div class="profile-menu">
+                    <a href="#" class="menu-item" style="text-decoration: none;">
+                        <i class="fas fa-bell menu-icon"></i>
+                        <div class="menu-text">通知設定</div>
+                        <i class="fas fa-chevron-right menu-arrow"></i>
+                    </a>
+                    <a href="#" class="menu-item" style="text-decoration: none;">
+                        <i class="fas fa-moon menu-icon"></i>
+                        <div class="menu-text">深色模式</div>
+                        <div style="margin-left: auto; margin-right: 10px;">
+                            <label class="switch" style="position: relative; display: inline-block; width: 50px; height: 24px;">
+                                <input type="checkbox" style="opacity: 0; width: 0; height: 0;">
+                                <span style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 24px;"></span>
+                            </label>
+                        </div>
+                    </a>
+                    <a href="#" class="menu-item" style="text-decoration: none;">
+                        <i class="fas fa-globe menu-icon"></i>
+                        <div class="menu-text">語言設定</div>
+                        <div style="margin-left: auto; margin-right: 10px; color: #8e8e93;">繁體中文</div>
+                        <i class="fas fa-chevron-right menu-arrow"></i>
+                    </a>
+                </div>
+                
+                <!-- 客服與反饋 -->
+                <h3 style="padding: 0 15px; margin: 15px 0 5px; color: #8e8e93; font-size: 14px; font-weight: 500;">客服與反饋</h3>
+                <div class="profile-menu">
+                    <a href="#" class="menu-item" style="text-decoration: none;">
+                        <i class="fas fa-headset menu-icon"></i>
+                        <div class="menu-text">聯繫客服</div>
+                        <i class="fas fa-chevron-right menu-arrow"></i>
+                    </a>
+                    <a href="#" class="menu-item" style="text-decoration: none;">
+                        <i class="fas fa-comment-alt menu-icon"></i>
+                        <div class="menu-text">意見反饋</div>
+                        <i class="fas fa-chevron-right menu-arrow"></i>
+                    </a>
+                    <a href="#" class="menu-item" style="text-decoration: none;">
+                        <i class="fas fa-info-circle menu-icon"></i>
+                        <div class="menu-text">關於我們</div>
+                        <i class="fas fa-chevron-right menu-arrow"></i>
+                    </a>
+                </div>
+                
+                <!-- 登出按鈕 -->
+                <div style="padding: 20px 15px;">
+                    <button class="btn btn-secondary btn-full" style="color: #FF7E45; border-color: #FF7E45;">登出帳號</button>
+                </div>
+                
+                <!-- 版本資訊 -->
+                <div style="text-align: center; padding: 10px; color: #8e8e93; font-size: 13px; margin-bottom: 20px;">
+                    版本 1.0.0
+                </div>
+            </div>
+            
+            <!-- 底部導航欄 -->
+            <div class="tab-bar">
+                <a href="index.html" class="tab-item">
+                    <i class="fas fa-home tab-icon"></i>
+                    <span>首頁</span>
+                </a>
+                <a href="explore.html" class="tab-item">
+                    <i class="fas fa-compass tab-icon"></i>
+                    <span>探索</span>
+                </a>
+                <a href="orders.html" class="tab-item">
+                    <i class="fas fa-clipboard-list tab-icon"></i>
+                    <span>訂單</span>
+                </a>
+                <a href="messages.html" class="tab-item">
+                    <i class="fas fa-comment-alt tab-icon"></i>
+                    <span>訊息</span>
+                </a>
+                <a href="profile.html" class="tab-item active">
+                    <i class="fas fa-user tab-icon"></i>
+                    <span>我的</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/main.js"></script>
+</body>
+</html> 

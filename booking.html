@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>預約服務 - 專才</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="iphone-frame">
+        <div class="dynamic-island"></div>
+        <div class="screen">
+            <!-- 頂部狀態欄 -->
+            <div class="status-bar">
+                <a href="javascript:history.back()" class="back-button">
+                    <i class="fas fa-chevron-left"></i>
+                </a>
+                <div class="status-bar-title">預約服務</div>
+            </div>
+            
+            <!-- 內容區域 -->
+            <div class="content">
+                <!-- 專家簡介 -->
+                <div class="card" style="display: flex; align-items: center;">
+                    <img src="images/avatars/avatar1.jpg" alt="專家頭像" class="avatar">
+                    <div style="margin-left: 15px;">
+                        <div style="font-weight: 600; font-size: 16px;">李明哲</div>
+                        <div style="color: #666; font-size: 14px;">UI/UX 設計師</div>
+                        <div style="display: flex; align-items: center; color: #FF7E45; margin-top: 3px;">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span style="margin-left: 5px; color: #666; font-size: 13px;">(4.5)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 預約表單 -->
+                <div class="card">
+                    <form id="booking-form" class="booking-form">
+                        <!-- 服務選擇 -->
+                        <div class="form-group">
+                            <label class="form-label">選擇服務</label>
+                            <select class="form-select">
+                                <option value="">請選擇服務項目</option>
+                                <option value="basic-ui">基礎UI設計 ($3,000)</option>
+                                <option value="complete-app">完整APP設計 ($12,000)</option>
+                                <option value="website">網站UI/UX設計 ($15,000)</option>
+                                <option value="custom">客製化服務 (報價)</option>
+                            </select>
+                        </div>
+                        
+                        <!-- 日期選擇 -->
+                        <div class="form-group">
+                            <label class="form-label">預約日期</label>
+                            <input type="date" class="form-input" min="2023-06-01" value="2023-06-10">
+                        </div>
+                        
+                        <!-- 時間選擇 -->
+                        <div class="form-group">
+                            <label class="form-label">選擇時段</label>
+                            <div class="time-slots">
+                                <div class="time-slot">9:00</div>
+                                <div class="time-slot">10:00</div>
+                                <div class="time-slot">11:00</div>
+                                <div class="time-slot">13:00</div>
+                                <div class="time-slot">14:00</div>
+                                <div class="time-slot">15:00</div>
+                                <div class="time-slot">16:00</div>
+                                <div class="time-slot">17:00</div>
+                            </div>
+                        </div>
+                        
+                        <!-- 需求說明 -->
+                        <div class="form-group">
+                            <label class="form-label">需求說明</label>
+                            <textarea class="form-input" style="height: 120px; resize: none;" placeholder="請詳細描述您的需求，如項目背景、設計風格偏好、參考案例等..."></textarea>
+                        </div>
+                        
+                        <!-- 聯絡方式 -->
+                        <div class="form-group">
+                            <label class="form-label">聯絡電話</label>
+                            <input type="tel" class="form-input" placeholder="請輸入您的聯絡電話">
+                        </div>
+                        
+                        <!-- 備註 -->
+                        <div class="form-group">
+                            <label class="form-label">備註（選填）</label>
+                            <input type="text" class="form-input" placeholder="如有其他需要說明的事項">
+                        </div>
+                        
+                        <!-- 提交按鈕 -->
+                        <button type="submit" class="btn btn-full" style="margin-top: 20px;">確認預約</button>
+                    </form>
+                </div>
+                
+                <!-- 注意事項 -->
+                <div class="card">
+                    <h3 style="margin-bottom: 10px; color: #333;">預約須知</h3>
+                    <ul style="padding-left: 20px; color: #666; font-size: 14px; line-height: 1.5;">
+                        <li>預約確認後，專家將與您聯繫確認詳細需求</li>
+                        <li>如需取消預約，請提前24小時通知</li>
+                        <li>首次諮詢時間約30-60分鐘</li>
+                        <li>項目報價將根據實際需求調整</li>
+                        <li>檔案交付格式請在諮詢時與專家確認</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- 底部導航欄 -->
+            <div class="tab-bar">
+                <a href="index.html" class="tab-item">
+                    <i class="fas fa-home tab-icon"></i>
+                    <span>首頁</span>
+                </a>
+                <a href="explore.html" class="tab-item">
+                    <i class="fas fa-compass tab-icon"></i>
+                    <span>探索</span>
+                </a>
+                <a href="orders.html" class="tab-item">
+                    <i class="fas fa-clipboard-list tab-icon"></i>
+                    <span>訂單</span>
+                </a>
+                <a href="messages.html" class="tab-item">
+                    <i class="fas fa-comment-alt tab-icon"></i>
+                    <span>訊息</span>
+                </a>
+                <a href="profile.html" class="tab-item">
+                    <i class="fas fa-user tab-icon"></i>
+                    <span>我的</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/main.js"></script>
+</body>
+</html> 

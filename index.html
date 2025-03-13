@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProLink - 專業人才服務平台</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="iphone-frame">
+        <div class="dynamic-island"></div>
+        <div class="screen">
+            <!-- 頂部狀態欄 -->
+            <div class="status-bar">
+                <div class="status-bar-title">ProLink</div>
+                <div style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%);">
+                    <i class="fas fa-bell" style="color: #FF7E45;"></i>
+                </div>
+            </div>
+            
+            <!-- 內容區域 -->
+            <div class="content">
+                <!-- 搜尋欄 -->
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="搜尋專家或服務...">
+                </div>
+                
+                <!-- 類別快速選擇 -->
+                <div class="category-grid">
+                    <a href="explore.html?category=design" style="text-decoration: none; color: inherit;">
+                        <div class="category-item">
+                            <img src="images/services/design.jpg" alt="設計開發" class="category-image">
+                            <div class="category-text">設計開發</div>
+                        </div>
+                    </a>
+                    <a href="explore.html?category=photo" style="text-decoration: none; color: inherit;">
+                        <div class="category-item">
+                            <img src="images/services/photo.jpg" alt="攝影視頻" class="category-image">
+                            <div class="category-text">攝影視頻</div>
+                        </div>
+                    </a>
+                    <a href="explore.html?category=translate" style="text-decoration: none; color: inherit;">
+                        <div class="category-item">
+                            <img src="images/services/writing.jpg" alt="翻譯寫作" class="category-image">
+                            <div class="category-text">翻譯寫作</div>
+                        </div>
+                    </a>
+                    <a href="explore.html?category=marketing" style="text-decoration: none; color: inherit;">
+                        <div class="category-item">
+                            <img src="images/services/marketing.jpg" alt="行銷策劃" class="category-image">
+                            <div class="category-text">行銷策劃</div>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- 橫幅廣告 -->
+                <div style="margin: 20px 15px; border-radius: 12px; overflow: hidden; position: relative; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    <img src="images/services/banner.jpg" alt="廣告橫幅" style="width: 100%; height: 140px; object-fit: cover;">
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(90deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.1) 100%); padding: 20px;">
+                        <div style="color: white; font-size: 18px; font-weight: 600; margin-bottom: 8px;">新用戶專屬優惠</div>
+                        <div style="color: white; font-size: 14px; margin-bottom: 15px;">首次預約享8折優惠</div>
+                        <button class="btn" style="padding: 6px 15px; font-size: 14px;">立即使用</button>
+                    </div>
+                </div>
+                
+                <!-- 熱門專家 -->
+                <div style="margin: 0 15px 20px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h3 style="margin: 0; font-size: 18px; color: #333;">熱門專家</h3>
+                        <a href="explore.html" style="color: #FF7E45; font-size: 14px; text-decoration: none;">查看全部 <i class="fas fa-chevron-right" style="font-size: 12px;"></i></a>
+                    </div>
+                    
+                    <div class="expert-list">
+                        <a href="expert-detail.html" style="text-decoration: none; color: inherit;">
+                            <div class="expert-item">
+                                <img src="images/avatars/avatar1.jpg" alt="專家頭像" class="avatar">
+                                <div class="expert-info">
+                                    <div class="expert-name">李明哲</div>
+                                    <div class="expert-title">UI/UX 設計師</div>
+                                    <div class="expert-rating">
+                                        <i class="fas fa-star"></i>
+                                        <span>4.8 (128)</span>
+                                    </div>
+                                    <div class="expert-price">NT$3,000起</div>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="expert-detail.html" style="text-decoration: none; color: inherit;">
+                            <div class="expert-item">
+                                <img src="images/avatars/avatar2.jpg" alt="專家頭像" class="avatar">
+                                <div class="expert-info">
+                                    <div class="expert-name">林佳穎</div>
+                                    <div class="expert-title">品牌設計師</div>
+                                    <div class="expert-rating">
+                                        <i class="fas fa-star"></i>
+                                        <span>4.9 (86)</span>
+                                    </div>
+                                    <div class="expert-price">NT$5,000起</div>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="expert-detail.html" style="text-decoration: none; color: inherit;">
+                            <div class="expert-item">
+                                <img src="images/avatars/avatar3.jpg" alt="專家頭像" class="avatar">
+                                <div class="expert-info">
+                                    <div class="expert-name">張志豪</div>
+                                    <div class="expert-title">攝影師</div>
+                                    <div class="expert-rating">
+                                        <i class="fas fa-star"></i>
+                                        <span>4.7 (203)</span>
+                                    </div>
+                                    <div class="expert-price">NT$2,500起</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 熱門服務 -->
+                <div style="margin: 0 15px 20px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h3 style="margin: 0; font-size: 18px; color: #333;">熱門服務</h3>
+                        <a href="explore.html?tab=services" style="color: #FF7E45; font-size: 14px; text-decoration: none;">查看全部 <i class="fas fa-chevron-right" style="font-size: 12px;"></i></a>
+                    </div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <div class="card" style="margin-bottom: 15px; padding: 15px;">
+                            <div style="display: flex; margin-bottom: 10px;">
+                                <img src="images/avatars/avatar5.jpg" alt="專家頭像" class="avatar">
+                                <div style="margin-left: 10px;">
+                                    <div style="font-weight: 600; color: #333;">陳俊宏</div>
+                                    <div style="font-size: 12px; color: #666;">網站開發專家</div>
+                                </div>
+                                <div style="margin-left: auto; font-size: 12px; color: #FF7E45;">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.8</span>
+                                </div>
+                            </div>
+                            <div style="font-weight: 600; margin-bottom: 5px; color: #333;">
+                                快速架設專業形象網站，三天內完成基礎版本
+                            </div>
+                            <div style="font-size: 14px; color: #666; margin-bottom: 10px;">
+                                包含RWD響應式設計，SEO基礎優化，最適合創業者和個人專業形象打造
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div style="font-size: 12px; color: #888;">
+                                    <i class="fas fa-clock"></i>
+                                    <span>7天內交付</span>
+                                </div>
+                                <div style="font-weight: 600; color: #FF7E45;">
+                                    NT$15,000起
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card" style="padding: 15px;">
+                            <div style="display: flex; margin-bottom: 10px;">
+                                <img src="images/avatars/avatar6.jpg" alt="專家頭像" class="avatar">
+                                <div style="margin-left: 10px;">
+                                    <div style="font-weight: 600; color: #333;">楊曉芬</div>
+                                    <div style="font-size: 12px; color: #666;">行銷顧問</div>
+                                </div>
+                                <div style="margin-left: auto; font-size: 12px; color: #FF7E45;">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.9</span>
+                                </div>
+                            </div>
+                            <div style="font-weight: 600; margin-bottom: 5px; color: #333;">
+                                社群媒體行銷策略規劃與執行
+                            </div>
+                            <div style="font-size: 14px; color: #666; margin-bottom: 10px;">
+                                量身打造FB、IG、LinkedIn有效行銷策略，提高品牌曝光與粉絲互動率
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div style="font-size: 12px; color: #888;">
+                                    <i class="fas fa-clock"></i>
+                                    <span>14天內交付</span>
+                                </div>
+                                <div style="font-weight: 600; color: #FF7E45;">
+                                    NT$20,000起
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 用戶評價 -->
+                <div style="margin: 0 15px 20px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h3 style="margin: 0; font-size: 18px; color: #333;">用戶評價</h3>
+                    </div>
+                    
+                    <div class="card" style="padding: 15px;">
+                        <div style="display: flex; margin-bottom: 10px;">
+                            <img src="images/avatars/avatar4.jpg" alt="用戶頭像" class="avatar">
+                            <div style="margin-left: 10px; flex: 1;">
+                                <div style="display: flex; justify-content: space-between;">
+                                    <div style="font-weight: 600; color: #333;">王美玲</div>
+                                    <div style="color: #FF7E45;">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <div style="font-size: 12px; color: #666;">2023年5月15日</div>
+                            </div>
+                        </div>
+                        <div style="font-size: 14px; color: #333; line-height: 1.5;">
+                            在專才平台找到了非常專業的英語教師，教學方式很生動，課程安排也很有彈性。老師能根據我的程度和需求調整教學內容，讓我在短時間內就有明顯進步！
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 常見問題 -->
+                <div style="margin: 0 15px 80px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h3 style="margin: 0; font-size: 18px; color: #333;">常見問題</h3>
+                        <a href="#" style="color: #FF7E45; font-size: 14px; text-decoration: none;">更多 <i class="fas fa-chevron-right" style="font-size: 12px;"></i></a>
+                    </div>
+                    
+                    <div class="card" style="padding: 0;">
+                        <div style="padding: 15px; border-bottom: 1px solid #eaeaea;">
+                            <div style="font-weight: 600; color: #333; margin-bottom: 5px;">如何選擇合適的專家？</div>
+                            <div style="font-size: 14px; color: #666;">
+                                可以根據專家評分、評價數量、完成率等指標進行選擇，同時查看其作品集和詳細資料...
+                            </div>
+                        </div>
+                        <div style="padding: 15px; border-bottom: 1px solid #eaeaea;">
+                            <div style="font-weight: 600; color: #333; margin-bottom: 5px;">如何保障服務質量？</div>
+                            <div style="font-size: 14px; color: #666;">
+                                專才平台提供交易擔保，服務完成後您滿意才付款。如有糾紛，平台提供協商服務...
+                            </div>
+                        </div>
+                        <div style="padding: 15px;">
+                            <div style="font-weight: 600; color: #333; margin-bottom: 5px;">預約後可以取消嗎？</div>
+                            <div style="font-size: 14px; color: #666;">
+                                預約成功後24小時內可免費取消。超過24小時取消需支付一定比例的違約金...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 底部導航欄 -->
+            <div class="tab-bar">
+                <a href="index.html" class="tab-item active">
+                    <i class="fas fa-home tab-icon"></i>
+                    <span>首頁</span>
+                </a>
+                <a href="explore.html" class="tab-item">
+                    <i class="fas fa-compass tab-icon"></i>
+                    <span>探索</span>
+                </a>
+                <a href="orders.html" class="tab-item">
+                    <i class="fas fa-clipboard-list tab-icon"></i>
+                    <span>訂單</span>
+                </a>
+                <a href="messages.html" class="tab-item">
+                    <i class="fas fa-comment-alt tab-icon"></i>
+                    <span>訊息</span>
+                </a>
+                <a href="profile.html" class="tab-item">
+                    <i class="fas fa-user tab-icon"></i>
+                    <span>我的</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/main.js"></script>
+</body>
+</html> 

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>專家詳情 - 專才</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="iphone-frame">
+        <div class="dynamic-island"></div>
+        <div class="screen">
+            <!-- 頂部狀態欄 -->
+            <div class="status-bar">
+                <a href="javascript:history.back()" class="back-button">
+                    <i class="fas fa-chevron-left"></i>
+                </a>
+                <div class="status-bar-title">專家詳情</div>
+            </div>
+            
+            <!-- 內容區域 -->
+            <div class="content">
+                <!-- 專家頭部信息 -->
+                <div class="detail-header">
+                    <img src="images/services/design.jpg" alt="封面" class="detail-cover">
+                    <div class="detail-avatar-container">
+                        <img src="images/avatars/avatar1.jpg" alt="專家頭像" class="avatar avatar-large">
+                    </div>
+                </div>
+                
+                <div class="detail-info">
+                    <div class="detail-name">李明哲</div>
+                    <div class="detail-title">UI/UX 設計師</div>
+                    
+                    <div class="detail-stats">
+                        <div class="detail-stat">
+                            <div class="detail-stat-number">4.5</div>
+                            <div class="detail-stat-label">評分</div>
+                        </div>
+                        <div class="detail-stat">
+                            <div class="detail-stat-number">126</div>
+                            <div class="detail-stat-label">評價數</div>
+                        </div>
+                        <div class="detail-stat">
+                            <div class="detail-stat-number">98%</div>
+                            <div class="detail-stat-label">完成率</div>
+                        </div>
+                    </div>
+                    
+                    <!-- 預約按鈕 -->
+                    <button class="btn btn-full booking-button" data-expert-id="1">立即預約</button>
+                    
+                    <!-- 關於我 -->
+                    <div class="detail-section">
+                        <div class="detail-section-title">關於我</div>
+                        <div class="detail-section-content">
+                            我是一位擁有5年經驗的UI/UX設計師，專精於用戶體驗設計和界面設計。曾為科技、電商、金融等多個領域的客戶提供設計服務。我注重細節，理解用戶需求，致力於創造優雅且實用的設計。
+                        </div>
+                    </div>
+                    
+                    <!-- 專業技能 -->
+                    <div class="detail-section">
+                        <div class="detail-section-title">專業技能</div>
+                        <div class="detail-section-content">
+                            <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 5px;">
+                                <span style="background: #f0f2f5; padding: 6px 12px; border-radius: 20px; font-size: 14px;">UI設計</span>
+                                <span style="background: #f0f2f5; padding: 6px 12px; border-radius: 20px; font-size: 14px;">UX設計</span>
+                                <span style="background: #f0f2f5; padding: 6px 12px; border-radius: 20px; font-size: 14px;">Figma</span>
+                                <span style="background: #f0f2f5; padding: 6px 12px; border-radius: 20px; font-size: 14px;">Sketch</span>
+                                <span style="background: #f0f2f5; padding: 6px 12px; border-radius: 20px; font-size: 14px;">Adobe XD</span>
+                                <span style="background: #f0f2f5; padding: 6px 12px; border-radius: 20px; font-size: 14px;">Prototyping</span>
+                                <span style="background: #f0f2f5; padding: 6px 12px; border-radius: 20px; font-size: 14px;">動效設計</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 作品集 -->
+                    <div class="detail-section">
+                        <div class="detail-section-title">作品集</div>
+                        <div class="work-samples">
+                            <div class="work-sample">
+                                <img src="images/services/design.jpg" alt="作品1">
+                            </div>
+                            <div class="work-sample">
+                                <img src="images/services/marketing.jpg" alt="作品2">
+                            </div>
+                            <div class="work-sample">
+                                <img src="images/services/photo.jpg" alt="作品3">
+                            </div>
+                            <div class="work-sample">
+                                <img src="images/services/programming.jpg" alt="作品4">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 服務項目 -->
+                    <div class="detail-section">
+                        <div class="detail-section-title">服務項目</div>
+                        <div style="margin-top: 10px;">
+                            <div style="display: flex; justify-content: space-between; padding: 12px; background: #f8f8fa; border-radius: 8px; margin-bottom: 10px;">
+                                <div>
+                                    <div style="font-weight: 600; color: #333;">基礎UI設計</div>
+                                    <div style="color: #666; font-size: 14px; margin-top: 3px;">5頁面UI設計，含簡單原型</div>
+                                </div>
+                                <div style="font-weight: 600; color: #1A7B8E;">$3,000</div>
+                            </div>
+                            
+                            <div style="display: flex; justify-content: space-between; padding: 12px; background: #f8f8fa; border-radius: 8px; margin-bottom: 10px;">
+                                <div>
+                                    <div style="font-weight: 600; color: #333;">完整APP設計</div>
+                                    <div style="color: #666; font-size: 14px; margin-top: 3px;">15+頁面設計，含可交互原型</div>
+                                </div>
+                                <div style="font-weight: 600; color: #1A7B8E;">$12,000</div>
+                            </div>
+                            
+                            <div style="display: flex; justify-content: space-between; padding: 12px; background: #f8f8fa; border-radius: 8px;">
+                                <div>
+                                    <div style="font-weight: 600; color: #333;">網站UI/UX設計</div>
+                                    <div style="color: #666; font-size: 14px; margin-top: 3px;">含桌面/移動端設計，響應式</div>
+                                </div>
+                                <div style="font-weight: 600; color: #1A7B8E;">$15,000</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 評價 -->
+                    <div class="detail-section">
+                        <div class="detail-section-title">用戶評價</div>
+                        <div>
+                            <!-- 評價1 -->
+                            <div class="review-item">
+                                <div class="review-header">
+                                    <img src="images/avatars/avatar2.jpg" alt="用戶頭像" class="avatar" style="width: 40px; height: 40px;">
+                                    <div class="review-user">
+                                        <div class="review-name">林佳穎</div>
+                                        <div class="review-date">2023-05-15</div>
+                                    </div>
+                                    <div class="review-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="review-content">
+                                    非常專業的設計師，從需求分析到最終設計稿都很細心，作品質量高，溝通也很順暢。會再次合作！
+                                </div>
+                            </div>
+                            
+                            <!-- 評價2 -->
+                            <div class="review-item">
+                                <div class="review-header">
+                                    <img src="images/avatars/avatar3.jpg" alt="用戶頭像" class="avatar" style="width: 40px; height: 40px;">
+                                    <div class="review-user">
+                                        <div class="review-name">張志豪</div>
+                                        <div class="review-date">2023-04-20</div>
+                                    </div>
+                                    <div class="review-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="review-content">
+                                    設計效果很好，但交付時間有點延遲。不過設計師很有耐心，根據反饋多次修改直到滿意。
+                                </div>
+                            </div>
+                            
+                            <!-- 評價3 -->
+                            <div class="review-item" style="border-bottom: none; margin-bottom: 0; padding-bottom: 0;">
+                                <div class="review-header">
+                                    <img src="images/avatars/avatar4.jpg" alt="用戶頭像" class="avatar" style="width: 40px; height: 40px;">
+                                    <div class="review-user">
+                                        <div class="review-name">王美玲</div>
+                                        <div class="review-date">2023-03-10</div>
+                                    </div>
+                                    <div class="review-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                </div>
+                                <div class="review-content">
+                                    對我的品牌設計提供了很好的建議，專業知識豐富，設計風格現代簡潔。最終作品幫助我的品牌形象提升了很多。
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 查看全部評價按鈕 -->
+                    <button class="btn btn-secondary btn-full" style="margin: 10px 0 20px;">查看全部評價</button>
+                </div>
+            </div>
+            
+            <!-- 底部導航欄 -->
+            <div class="tab-bar">
+                <a href="index.html" class="tab-item">
+                    <i class="fas fa-home tab-icon"></i>
+                    <span>首頁</span>
+                </a>
+                <a href="explore.html" class="tab-item">
+                    <i class="fas fa-compass tab-icon"></i>
+                    <span>探索</span>
+                </a>
+                <a href="orders.html" class="tab-item">
+                    <i class="fas fa-clipboard-list tab-icon"></i>
+                    <span>訂單</span>
+                </a>
+                <a href="messages.html" class="tab-item">
+                    <i class="fas fa-comment-alt tab-icon"></i>
+                    <span>訊息</span>
+                </a>
+                <a href="profile.html" class="tab-item">
+                    <i class="fas fa-user tab-icon"></i>
+                    <span>我的</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/main.js"></script>
+</body>
+</html> 

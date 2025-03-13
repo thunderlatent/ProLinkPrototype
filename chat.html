@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聊天 - 專才</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .chat-area {
+            padding: 10px 16px;
+            overflow-y: auto;
+            height: calc(100% - 150px);
+            margin-bottom: 80px;
+            background-color: #f2f2f7;
+        }
+        .chat-bubble {
+            max-width: 75%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            margin-bottom: 12px;
+            position: relative;
+            word-wrap: break-word;
+            line-height: 1.4;
+            font-size: 16px;
+        }
+        .chat-sent {
+            background-color: #007AFF;
+            color: #fff;
+            margin-left: auto;
+            border-bottom-right-radius: 5px;
+        }
+        .chat-received {
+            background-color: #e5e5ea;
+            color: #000;
+            margin-right: auto;
+            border-bottom-left-radius: 5px;
+        }
+        .chat-time {
+            font-size: 11px;
+            text-align: right;
+            margin-top: 4px;
+            color: rgba(142, 142, 147, 0.8);
+        }
+        .chat-input-container {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 428px;
+            box-sizing: border-box;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
+        .chat-input {
+            flex: 1;
+            border: none;
+            border-radius: 20px;
+            padding: 12px 16px;
+            font-size: 16px;
+            outline: none;
+            background-color: #e5e5ea;
+        }
+        .chat-send-btn {
+            margin-left: 10px;
+            background-color: #007AFF;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .chat-attach-btn {
+            margin-right: 10px;
+            color: #8e8e93;
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .chat-header {
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            position: relative;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            z-index: 5;
+            margin-top: 15px;
+        }
+        .chat-back-btn {
+            color: #007AFF;
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            position: absolute;
+            left: 16px;
+        }
+        .chat-header-info {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .avatar-chat {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            margin-right: 10px;
+            object-fit: cover;
+        }
+        .chat-header-name {
+            font-weight: 600;
+            font-size: 17px;
+            color: #000;
+        }
+        .chat-header-status {
+            font-size: 13px;
+            color: #8e8e93;
+        }
+        .chat-date-divider {
+            text-align: center;
+            margin: 15px 0;
+            position: relative;
+        }
+        .chat-date-divider span {
+            background-color: #f2f2f7;
+            padding: 0 10px;
+            color: #8e8e93;
+            font-size: 13px;
+            position: relative;
+            z-index: 1;
+        }
+        .chat-date-divider:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background-color: rgba(0, 0, 0, 0.1);
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="iphone-frame">
+        <div class="dynamic-island"></div>
+        <div class="screen">
+            <!-- 頂部狀態欄 -->
+            <div class="status-bar">
+                <div class="status-bar-title">聊天</div>
+            </div>
+            
+            <!-- 聊天頭部 -->
+            <div class="chat-header">
+                <a href="messages.html" class="chat-back-btn">
+                    <i class="fas fa-chevron-left"></i>
+                </a>
+                <div class="chat-header-info">
+                    <img src="images/avatars/avatar1.jpg" alt="專家頭像" class="avatar-chat">
+                    <div>
+                        <div class="chat-header-name">李明哲</div>
+                        <div class="chat-header-status">線上</div>
+                    </div>
+                </div>
+                <div style="width: 22px;"></div> <!-- 平衡左側返回按鈕的空間 -->
+            </div>
+            
+            <!-- 聊天區域 -->
+            <div class="chat-area">
+                <!-- 日期分隔線 -->
+                <div class="chat-date-divider">
+                    <span>今天</span>
+                </div>
+                
+                <!-- 收到的消息 -->
+                <div class="chat-bubble chat-received">
+                    您好！我已經收到您的預約需求，想跟您確認一下設計風格的偏好，是偏向簡約現代風，還是有其他特定風格的考量呢？
+                    <div class="chat-time">10:30</div>
+                </div>
+                
+                <!-- 發送的消息 -->
+                <div class="chat-bubble chat-sent">
+                    您好李設計師！我比較喜歡簡約但不失特色的風格，可以參考我之前傳給您的那些案例。主色調希望是藍色系的。
+                    <div class="chat-time">10:35</div>
+                </div>
+                
+                <!-- 收到的消息 -->
+                <div class="chat-bubble chat-received">
+                    明白了！藍色系簡約風格是很好的選擇。您提供的案例我已經看過了，可以進一步問一下，這個網站設計主要是用於什麼類型的業務呢？這樣我可以更好地把握整體的設計方向。
+                    <div class="chat-time">10:37</div>
+                </div>
+                
+                <!-- 發送的消息 -->
+                <div class="chat-bubble chat-sent">
+                    是一個提供專業服務的平台，類似於這個"專才"APP的網頁版。主要用戶是尋找專業人士提供服務的客戶，和提供專業服務的專家。
+                    <div class="chat-time">10:40</div>
+                </div>
+                
+                <!-- 收到的消息 -->
+                <div class="chat-bubble chat-received">
+                    了解了！這類平台的設計需要突出專業性與信任感，同時保持良好的用戶體驗，讓兩類用戶都能方便地使用。
+                    <div class="chat-time">10:42</div>
+                </div>
+                
+                <!-- 收到的消息 -->
+                <div class="chat-bubble chat-received">
+                    我會根據您提供的資訊和偏好，設計一個簡約但有特色的藍色系網站。初步構思是使用深藍色作為主色調，配以淺藍色和白色作為輔助色，確保整體視覺清晰且專業。
+                    <div class="chat-time">10:45</div>
+                </div>
+                
+                <!-- 收到的消息 -->
+                <div class="chat-bubble chat-received">
+                    預計三天內可以完成初稿，到時會先發給您看看，再根據您的反饋進行調整。這樣安排可以嗎？
+                    <div class="chat-time">10:47</div>
+                </div>
+                
+                <!-- 發送的消息 -->
+                <div class="chat-bubble chat-sent">
+                    聽起來很棒！三天時間完全可以，期待看到您的設計。如果有任何問題隨時可以聯繫我。謝謝您！
+                    <div class="chat-time">10:50</div>
+                </div>
+            </div>
+            
+            <!-- 輸入區域 -->
+            <div class="chat-input-container">
+                <div class="chat-attach-btn">
+                    <i class="fas fa-plus-circle"></i>
+                </div>
+                <input type="text" class="chat-input" placeholder="輸入訊息...">
+                <button class="chat-send-btn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+            
+            <!-- 底部導航欄 - 在聊天頁面隱藏 -->
+        </div>
+    </div>
+    
+    <script src="js/main.js"></script>
+    <script>
+        // 簡單的發送訊息功能
+        document.querySelector('.chat-send-btn').addEventListener('click', function() {
+            const input = document.querySelector('.chat-input');
+            const message = input.value.trim();
+            
+            if (message) {
+                const chatArea = document.querySelector('.chat-area');
+                const now = new Date();
+                const hours = now.getHours().toString().padStart(2, '0');
+                const minutes = now.getMinutes().toString().padStart(2, '0');
+                const timeString = `${hours}:${minutes}`;
+                
+                const messageBubble = document.createElement('div');
+                messageBubble.className = 'chat-bubble chat-sent';
+                messageBubble.innerHTML = `
+                    ${message}
+                    <div class="chat-time">${timeString}</div>
+                `;
+                
+                chatArea.appendChild(messageBubble);
+                input.value = '';
+                
+                // 滾動到底部
+                chatArea.scrollTop = chatArea.scrollHeight;
+                
+                // 模擬接收回覆（僅作演示）
+                setTimeout(function() {
+                    const replyBubble = document.createElement('div');
+                    replyBubble.className = 'chat-bubble chat-received';
+                    replyBubble.innerHTML = `
+                        好的，我已經收到您的訊息，稍後會回復您。
+                        <div class="chat-time">${timeString}</div>
+                    `;
+                    
+                    chatArea.appendChild(replyBubble);
+                    chatArea.scrollTop = chatArea.scrollHeight;
+                }, 1500);
+            }
+        });
+        
+        // 按Enter鍵發送訊息
+        document.querySelector('.chat-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.querySelector('.chat-send-btn').click();
+            }
+        });
+        
+        // 頁面加載時滾動到底部
+        window.onload = function() {
+            const chatArea = document.querySelector('.chat-area');
+            chatArea.scrollTop = chatArea.scrollHeight;
+        };
+    </script>
+</body>
+</html> 

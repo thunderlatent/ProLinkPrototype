@@ -5,95 +5,145 @@
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
-    font-family: -apple-system, 'SF Pro Text', 'SF Pro Display', 'Helvetica Neue', sans-serif;
-    background-color: #f2f2f7;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+    background-color: transparent;
     color: #000;
     line-height: 1.5;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f7;
 }
 
-/* iPhone 框架 */
+/* iPhone 16 Pro Max 框架 */
 .iphone-frame {
-    width: 430px;
-    height: 932px;
-    background-color: #000;
-    border-radius: 55px;
     position: relative;
-    margin: 0 auto;
-    box-shadow: 0 0 50px rgba(0,0,0,0.2);
+    width: 430px; /* iPhone 16 Pro Max 寬度 */
+    height: 932px; /* iPhone 16 Pro Max 高度 */
+    background-color: white;
+    border-radius: 55px; /* 更大的圓角 */
     overflow: hidden;
+    margin: 20px auto;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+    border: 14px solid #1d1d1f; /* 更寬的邊框 */
+    position: relative;
 }
 
 /* 動態島 */
 .dynamic-island {
-    width: 126px;
-    height: 37px;
-    background: #000;
-    border-radius: 20px;
-    position: fixed;
-    top: calc(env(safe-area-inset-top) + 6px);
+    position: absolute;
+    top: 12px; /* 調整位置 */
     left: 50%;
     transform: translateX(-50%);
-    z-index: 1000;
+    width: 145px; /* 更寬的動態島 */
+    height: 37px; /* 更高的動態島 */
+    background-color: #000;
+    border-radius: 20px; /* 完整的圓角 */
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 動態島內部元素 */
+.dynamic-island::before {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: rgba(60, 60, 60, 0.8);
+    border-radius: 50%;
+    right: 35px;
+}
+
+.dynamic-island::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: rgba(60, 60, 60, 0.6);
+    border-radius: 50%;
+    left: 35px;
 }
 
 /* 螢幕 */
 .screen {
+    position: relative;
     width: 100%;
     height: 100%;
-    background: #fff;
-    position: relative;
+    background-color: #f2f2f7;
     overflow: hidden;
-    padding-top: env(safe-area-inset-top);
-    padding-bottom: env(safe-area-inset-bottom);
 }
 
 /* 內容區域 */
 .content {
     width: 100%;
-    height: 100%;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    padding-top: calc(44px + env(safe-area-inset-top) + 37px); /* 狀態欄 + 安全區域 + 動態島高度 */
-    padding-bottom: calc(84px + env(safe-area-inset-bottom));
+    scroll-behavior: smooth;
+    padding: 16px; /* iOS 標準間距 */
+    padding-top: 85px; /* 調整頂部間距，適應動態島 */
+    padding-bottom: 34px; /* 底部安全區域 */
+    height: calc(100% - 90px); /* 減去底部導航欄高度 */
 }
 
 /* 狀態欄 */
 .status-bar {
     position: fixed;
-    top: 0;
+    top: 55px; /* 調整位置，適應動態島 */
     left: 0;
     right: 0;
-    height: 44px;
-    background: rgba(255, 255, 255, 0.85);
+    height: 48px; /* 更高的狀態欄 */
+    background-color: rgba(242, 242, 247, 0.95);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 100;
-    padding: 0 16px;
-    padding-top: env(safe-area-inset-top);
+    z-index: 9;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    max-width: 430px; /* 與 iPhone 框架寬度一致 */
+    margin: 0 auto;
 }
 
+/* 狀態欄標題 */
 .status-bar-title {
-    font-size: 17px;
     font-weight: 600;
+    font-size: 18px; /* 更大的字體 */
     color: #000;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 60%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* 返回按鈕 */
 .back-button {
     position: absolute;
     left: 16px;
-    color: #007AFF;
-    font-size: 17px;
-    text-decoration: none;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
     display: flex;
     align-items: center;
-    height: 100%;
+    justify-content: center;
+    color: #007AFF;
+    text-decoration: none;
+    font-size: 18px;
+    z-index: 1;
 }
 
 /* 底部導航欄 */
@@ -102,58 +152,68 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 84px;
-    background: rgba(255, 255, 255, 0.85);
+    height: 90px; /* 更高的導航欄 */
+    background-color: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     display: flex;
     justify-content: space-around;
     align-items: center;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    z-index: 100;
-    padding-bottom: env(safe-area-inset-bottom);
+    border-top: 1px solid rgba(0,0,0,0.1);
+    z-index: 10;
+    max-width: 430px; /* 與 iPhone 框架寬度一致 */
+    margin: 0 auto;
+    padding-bottom: 34px; /* 底部安全區域 */
 }
 
+/* 底部導航項目 */
 .tab-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-decoration: none;
+    justify-content: center;
     color: #8e8e93;
+    text-decoration: none;
     font-size: 10px;
-    padding: 5px 0;
+    width: 20%;
+    height: 56px; /* 調整高度 */
+    transition: color 0.2s;
 }
 
+/* 激活的導航項目 */
 .tab-item.active {
     color: #007AFF;
 }
 
+/* 導航圖標 */
 .tab-icon {
-    font-size: 24px;
+    font-size: 24px; /* 更大的圖標 */
     margin-bottom: 4px;
 }
 
 /* 卡片樣式 */
 .card {
     background: #fff;
-    border-radius: 12px;
-    padding: 16px;
-    margin: 16px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    border-radius: 16px; /* 更大的圓角 */
+    padding: 20px; /* 更大的內邊距 */
+    margin-bottom: 20px; /* 更大的外邊距 */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08); /* 更柔和的陰影 */
+    border: 1px solid rgba(0,0,0,0.05); /* 更細的邊框 */
 }
 
 /* 頭像 */
 .avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 20px;
+    width: 48px; /* 更大的頭像 */
+    height: 48px; /* 更大的頭像 */
+    border-radius: 50%;
     object-fit: cover;
+    border: 2px solid #fff; /* 添加邊框 */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* 添加陰影 */
 }
 
 .avatar-large {
-    width: 80px;
-    height: 80px;
-    border-radius: 40px;
+    width: 100px; /* 更大的大頭像 */
+    height: 100px; /* 更大的大頭像 */
 }
 
 /* 按鈕 */
@@ -161,27 +221,41 @@ body {
     background: #007AFF;
     color: #fff;
     border: none;
-    border-radius: 8px;
-    padding: 12px 20px;
-    font-size: 17px;
+    border-radius: 12px; /* 更大的圓角 */
+    padding: 16px 24px; /* 更大的內邊距 */
+    font-size: 17px; /* 更大的字體 */
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.3s ease; /* 更平滑的過渡 */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* 更大的間距 */
+    box-shadow: 0 4px 10px rgba(0,122,255,0.2); /* 添加陰影 */
+    position: relative;
+    overflow: hidden;
+}
+
+.btn i {
+    font-size: 18px; /* 更大的圖標 */
 }
 
 .btn:active {
-    background: #0051FF;
-    transform: scale(0.98);
+    transform: scale(0.98) translateY(2px); /* 更明顯的按下效果 */
+    box-shadow: 0 2px 5px rgba(0,122,255,0.2); /* 更小的陰影 */
+    background: #0062CC; /* 更深的顏色 */
 }
 
 .btn-secondary {
     background: #fff;
     color: #007AFF;
     border: 1px solid #007AFF;
+    box-shadow: 0 4px 10px rgba(0,122,255,0.1); /* 更柔和的陰影 */
 }
 
 .btn-secondary:active {
-    background: #f2f2f7;
+    background: #f0f0f5; /* 更明顯的按下效果 */
+    box-shadow: 0 2px 5px rgba(0,122,255,0.1); /* 更小的陰影 */
 }
 
 .btn-full {
@@ -191,27 +265,31 @@ body {
 /* 搜尋欄 */
 .search-bar {
     background: #f2f2f7;
-    border-radius: 10px;
-    padding: 8px 16px;
-    margin: 16px;
+    border-radius: 16px; /* 更大的圓角 */
+    padding: 14px 18px; /* 更大的內邊距 */
     display: flex;
     align-items: center;
+    margin-bottom: 20px; /* 更大的外邊距 */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* 添加陰影 */
+    border: 1px solid rgba(0,0,0,0.05); /* 添加邊框 */
+}
+
+.search-bar i {
+    color: #8e8e93;
+    font-size: 18px; /* 更大的圖標 */
 }
 
 .search-bar input {
     border: none;
     background: none;
-    flex: 1;
-    margin-left: 8px;
-    font-size: 17px;
+    margin-left: 12px; /* 更大的間距 */
+    font-size: 17px; /* 更大的字體 */
+    width: 100%;
     outline: none;
+    color: #000; /* 更深的顏色 */
 }
 
 .search-bar input::placeholder {
-    color: #8e8e93;
-}
-
-.search-bar i {
     color: #8e8e93;
 }
 
@@ -219,18 +297,25 @@ body {
 .category-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+    gap: 20px; /* 更大的間距 */
     padding: 0 16px;
-    margin-bottom: 20px;
+    margin-bottom: 25px; /* 更大的外邊距 */
 }
 
 .category-item {
     position: relative;
     width: 100%;
     padding-bottom: 100%;
-    border-radius: 12px;
+    border-radius: 20px; /* 更大的圓角 */
     overflow: hidden;
     background: #f2f2f7;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* 添加陰影 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 添加過渡效果 */
+}
+
+.category-item:active {
+    transform: scale(0.98); /* 按下效果 */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* 更小的陰影 */
 }
 
 .category-image {
@@ -240,12 +325,12 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 12px;
-    transition: transform 0.3s ease;
+    border-radius: 20px; /* 更大的圓角 */
+    transition: transform 0.5s ease; /* 更平滑的過渡 */
 }
 
 .category-item:hover .category-image {
-    transform: scale(1.05);
+    transform: scale(1.08); /* 更明顯的懸停效果 */
 }
 
 .category-text {
@@ -253,63 +338,71 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 12px;
-    background: linear-gradient(transparent, rgba(0,0,0,0.7));
+    padding: 16px; /* 更大的內邊距 */
+    background: linear-gradient(transparent, rgba(0,0,0,0.8)); /* 更深的漸變 */
     color: #fff;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 18px; /* 更大的字體 */
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3); /* 添加文字陰影 */
 }
 
 /* 專家列表 */
 .expert-list {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 16px; /* 更大的間距 */
 }
 
 .expert-item {
     display: flex;
     align-items: center;
-    padding: 12px;
+    padding: 16px; /* 更大的內邊距 */
     background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    border-radius: 16px; /* 更大的圓角 */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08); /* 更柔和的陰影 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 添加過渡效果 */
+    border: 1px solid rgba(0,0,0,0.05); /* 添加邊框 */
+}
+
+.expert-item:active {
+    transform: scale(0.98); /* 按下效果 */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08); /* 更小的陰影 */
 }
 
 .expert-info {
     flex: 1;
-    margin-left: 12px;
+    margin-left: 16px; /* 更大的間距 */
 }
 
 .expert-name {
     font-weight: 600;
-    font-size: 16px;
+    font-size: 18px; /* 更大的字體 */
     color: #000;
-    margin-bottom: 4px;
+    margin-bottom: 6px; /* 更大的間距 */
 }
 
 .expert-title {
-    font-size: 14px;
+    font-size: 15px; /* 更大的字體 */
     color: #8e8e93;
-    margin-bottom: 4px;
+    margin-bottom: 6px; /* 更大的間距 */
 }
 
 .expert-rating {
     display: flex;
     align-items: center;
     color: #FF9500;
-    font-size: 14px;
-    margin-bottom: 4px;
+    font-size: 15px; /* 更大的字體 */
+    margin-bottom: 6px; /* 更大的間距 */
 }
 
 .expert-rating i {
-    margin-right: 4px;
+    margin-right: 6px; /* 更大的間距 */
 }
 
 .expert-price {
     font-weight: 600;
     color: #007AFF;
-    font-size: 14px;
+    font-size: 16px; /* 更大的字體 */
 }
 
 /* 響應式調整 */
@@ -320,38 +413,33 @@ body {
     }
     
     .content {
-        padding-top: calc(44px + env(safe-area-inset-top) + 37px);
+        padding-top: 85px; /* 調整頂部間距 */
+        padding-bottom: 34px; /* 底部安全區域 */
+    }
+    
+    .tab-bar {
+        height: 90px; /* 更高的導航欄 */
+        padding-bottom: 34px; /* 底部安全區域 */
     }
 }
 
 @media (max-height: 850px) {
     .iphone-frame {
-        width: 430px;
-        height: 932px;
-    }
-    
-    .content {
-        padding-top: calc(44px + env(safe-area-inset-top) + 37px);
+        transform: scale(0.95); /* 縮小整體尺寸 */
+        transform-origin: center top;
     }
 }
 
 /* 移除固定定位的內容 */
 .chat-input-container,
 .chat-header,
-.tab-bar,
-.status-bar {
+.tab-bar {
     position: fixed;
     background: #fff;
 }
 
 /* 優化滾動行為 */
-.content {
-    -webkit-overflow-scrolling: touch;
-    scroll-behavior: smooth;
-    overflow-y: auto;
-    height: calc(100vh - 44px - 37px - 84px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
-    padding-bottom: calc(84px + env(safe-area-inset-bottom));
-}
+/* 已合併到上面的 .content 樣式中 */
 
 /* iOS 風格優化 */
 .btn {
@@ -364,9 +452,9 @@ body {
 
 /* 訂單頁面優化 */
 .order-status {
-    padding: 4px 8px;
-    border-radius: 12px;
-    font-size: 12px;
+    padding: 6px 12px; /* 更大的內邊距 */
+    border-radius: 16px; /* 更大的圓角 */
+    font-size: 13px; /* 更大的字體 */
     font-weight: 600;
 }
 
@@ -392,38 +480,42 @@ body {
 
 /* 進度條樣式 */
 .progress-bar {
-    height: 6px;
+    height: 8px; /* 更高的進度條 */
     background-color: #f0f2f5;
-    border-radius: 3px;
+    border-radius: 4px; /* 更大的圓角 */
     overflow: hidden;
+    margin: 8px 0; /* 添加間距 */
 }
 
 .progress-fill {
     height: 100%;
-    background-color: #1A7B8E;
-    border-radius: 3px;
-    transition: width 0.3s ease;
+    background-color: #007AFF; /* 使用主題色 */
+    border-radius: 4px; /* 更大的圓角 */
+    transition: width 0.5s ease; /* 更平滑的過渡 */
 }
 
 /* 訊息頁面優化 */
 .message-item {
     position: relative;
-    padding: 15px;
+    padding: 18px; /* 更大的內邊距 */
     border-bottom: 1px solid #eaeaea;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.3s ease; /* 更平滑的過渡 */
+    border-radius: 16px; /* 添加圓角 */
+    margin-bottom: 10px; /* 添加間距 */
 }
 
 .message-item:active {
     background-color: #f5f5f5;
+    transform: scale(0.98); /* 按下效果 */
 }
 
 .unread-badge {
     position: absolute;
-    top: 15px;
-    right: 15px;
-    width: 8px;
-    height: 8px;
-    background-color: #FF7E45;
+    top: 18px;
+    right: 18px;
+    width: 10px; /* 更大的徽章 */
+    height: 10px; /* 更大的徽章 */
+    background-color: #FF3B30; /* 使用 iOS 紅色 */
     border-radius: 50%;
     animation: pulse 2s infinite;
 }
@@ -434,8 +526,8 @@ body {
         opacity: 1;
     }
     50% {
-        transform: scale(1.2);
-        opacity: 0.8;
+        transform: scale(1.3); /* 更明顯的脈動效果 */
+        opacity: 0.7;
     }
     100% {
         transform: scale(1);
@@ -444,16 +536,6 @@ body {
 }
 
 /* 按鈕交互優化 */
-.btn {
-    transition: all 0.2s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.btn:active {
-    transform: scale(0.98);
-}
-
 .btn::after {
     content: '';
     position: absolute;
@@ -461,7 +543,7 @@ body {
     left: 50%;
     width: 5px;
     height: 5px;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.6); /* 更明顯的漣漪效果 */
     opacity: 0;
     border-radius: 100%;
     transform: scale(1, 1) translate(-50%);
@@ -469,13 +551,13 @@ body {
 }
 
 .btn:active::after {
-    animation: ripple 0.6s ease-out;
+    animation: ripple 0.8s ease-out; /* 更長的動畫時間 */
 }
 
 @keyframes ripple {
     0% {
         transform: scale(0, 0);
-        opacity: 0.5;
+        opacity: 0.6;
     }
     100% {
         transform: scale(100, 100);
@@ -486,12 +568,273 @@ body {
 /* 動態島適配 */
 @media screen and (max-height: 932px) {
     .content {
-        padding-top: 15px;
+        padding-top: 85px; /* 調整頂部間距 */
     }
 }
 
 @media screen and (max-height: 850px) {
     .content {
-        padding-top: 10px;
+        padding-top: 85px; /* 調整頂部間距 */
     }
+}
+
+/* 圖片預覽樣式 */
+.image-preview {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.preview-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.preview-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    z-index: 1001;
+    animation: zoomIn 0.3s ease;
+}
+
+.preview-content img {
+    max-width: 100%;
+    max-height: 90vh;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    display: block;
+}
+
+.preview-close {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: none;
+    color: #000;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.preview-close:active {
+    transform: scale(0.9);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* 載入動畫樣式 */
+.loading-indicator {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(0, 122, 255, 0.2);
+    border-radius: 50%;
+    border-top-color: #007AFF;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* 頁面載入動畫 */
+.page-loaded .detail-section {
+    animation: fadeInUp 0.5s ease forwards;
+    opacity: 0;
+}
+
+.page-loaded .detail-section:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.page-loaded .detail-section:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.page-loaded .detail-section:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.page-loaded .detail-section:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.page-loaded .detail-section:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 技能標籤樣式 */
+.skill-tag {
+    display: inline-block;
+    background: linear-gradient(45deg, #f0f2f5, #e6e9f0);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    color: #333;
+    margin: 0 8px 8px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.skill-tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background: linear-gradient(45deg, #e6e9f0, #f0f2f5);
+}
+
+/* 服務卡片樣式 */
+.service-card {
+    background-color: #f8f8fa;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+    border-left: 4px solid #007AFF;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.service-card:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.service-title {
+    font-weight: 600;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.service-desc {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.service-price {
+    font-weight: 700;
+    font-size: 18px;
+    color: #007AFF;
+    text-align: right;
+}
+
+/* 評價樣式 */
+.review-item {
+    padding: 15px 0;
+    border-bottom: 1px solid #eaeaea;
+    margin-bottom: 15px;
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.review-user {
+    flex: 1;
+    margin-left: 10px;
+}
+
+.review-name {
+    font-weight: 600;
+    font-size: 15px;
+    color: #333;
+}
+
+.review-date {
+    font-size: 12px;
+    color: #8e8e93;
+}
+
+.review-rating {
+    color: #FF9500;
+    font-size: 14px;
+}
+
+.review-content {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+}
+
+/* 浮動聯繫按鈕 */
+.floating-contact {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(45deg, #34C759, #30D158);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 4px 15px rgba(52,199,89,0.4);
+    z-index: 100;
+    transition: all 0.3s ease;
+}
+
+.floating-contact:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 8px rgba(52,199,89,0.4);
 } 

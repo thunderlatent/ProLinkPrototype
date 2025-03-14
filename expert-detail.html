@@ -3,24 +3,365 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>專家詳情 - 專才</title>
+    <title>專家詳情 - ProLink</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/ios-styles.css">
+    <style>
+        /* 專家詳情頁面特定樣式 */
+        .detail-header {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .detail-cover {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.85);
+            transition: all 0.5s ease;
+        }
+        
+        .detail-cover:hover {
+            transform: scale(1.05);
+            filter: brightness(0.9);
+        }
+        
+        .detail-avatar-container {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            border: 4px solid #fff;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            background-color: #fff;
+            transition: all 0.3s ease;
+        }
+        
+        .detail-avatar-container:hover {
+            transform: translateX(-50%) scale(1.05);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+        
+        .avatar-large {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .detail-info {
+            padding: 50px 20px 20px;
+            background-color: #fff;
+            border-radius: 20px;
+            margin-top: -20px;
+            position: relative;
+            z-index: 5;
+        }
+        
+        .detail-name {
+            font-size: 24px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 5px;
+            color: #000;
+            background: linear-gradient(45deg, #007AFF, #5856D6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .detail-title {
+            font-size: 16px;
+            color: #8e8e93;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .detail-stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f8f8fa;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .detail-stat {
+            text-align: center;
+            position: relative;
+        }
+        
+        .detail-stat:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 70%;
+            width: 1px;
+            background-color: #e0e0e0;
+        }
+        
+        .detail-stat-number {
+            font-size: 20px;
+            font-weight: 700;
+            color: #007AFF;
+            margin-bottom: 5px;
+        }
+        
+        .detail-stat-label {
+            font-size: 12px;
+            color: #8e8e93;
+        }
+        
+        .btn-full {
+            margin: 20px 0;
+            background: linear-gradient(45deg, #007AFF, #5856D6);
+            border: none;
+            box-shadow: 0 4px 15px rgba(0,122,255,0.3);
+            transition: all 0.3s ease;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .btn-full:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 8px rgba(0,122,255,0.3);
+        }
+        
+        .detail-section {
+            margin-bottom: 25px;
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .detail-section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #000;
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        .detail-section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 18px;
+            background: linear-gradient(to bottom, #007AFF, #5856D6);
+            border-radius: 2px;
+        }
+        
+        .detail-section-content {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .work-samples {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .work-sample {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .work-sample:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        
+        .work-sample img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .review-item {
+            padding: 15px 0;
+            border-bottom: 1px solid #eaeaea;
+            margin-bottom: 15px;
+        }
+        
+        .review-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .review-user {
+            flex: 1;
+            margin-left: 10px;
+        }
+        
+        .review-name {
+            font-weight: 600;
+            font-size: 15px;
+            color: #333;
+        }
+        
+        .review-date {
+            font-size: 12px;
+            color: #8e8e93;
+        }
+        
+        .review-rating {
+            color: #FF9500;
+            font-size: 14px;
+        }
+        
+        .review-content {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #333;
+        }
+        
+        .btn-secondary {
+            background-color: #f8f8fa;
+            color: #007AFF;
+            border: 1px solid #007AFF;
+            box-shadow: none;
+        }
+        
+        .btn-secondary:active {
+            background-color: #f0f0f5;
+        }
+        
+        /* 動畫效果 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .detail-info {
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        .detail-section {
+            animation: fadeIn 0.5s ease-out;
+            animation-fill-mode: both;
+        }
+        
+        .detail-section:nth-child(1) { animation-delay: 0.1s; }
+        .detail-section:nth-child(2) { animation-delay: 0.2s; }
+        .detail-section:nth-child(3) { animation-delay: 0.3s; }
+        .detail-section:nth-child(4) { animation-delay: 0.4s; }
+        .detail-section:nth-child(5) { animation-delay: 0.5s; }
+        
+        /* 浮動聯繫按鈕 */
+        .floating-contact {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #34C759, #30D158);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 4px 15px rgba(52,199,89,0.4);
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+        
+        .floating-contact:active {
+            transform: scale(0.95);
+            box-shadow: 0 2px 8px rgba(52,199,89,0.4);
+        }
+        
+        /* 服務項目卡片樣式 */
+        .service-card {
+            background-color: #f8f8fa;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+            border-left: 4px solid #007AFF;
+        }
+        
+        .service-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .service-title {
+            font-weight: 600;
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .service-desc {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .service-price {
+            font-weight: 700;
+            font-size: 18px;
+            color: #007AFF;
+            text-align: right;
+        }
+        
+        /* 技能標籤樣式 */
+        .skill-tag {
+            display: inline-block;
+            background: linear-gradient(45deg, #f0f2f5, #e6e9f0);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            color: #333;
+            margin: 0 8px 8px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .skill-tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background: linear-gradient(45deg, #e6e9f0, #f0f2f5);
+        }
+    </style>
 </head>
 <body>
     <div class="iphone-frame">
         <div class="dynamic-island"></div>
         <div class="screen">
-            <!-- 頂部狀態欄 -->
-            <div class="status-bar">
-                <a href="javascript:history.back()" class="back-button">
-                    <i class="fas fa-chevron-left"></i>
+            <!-- iOS 風格導航欄 -->
+            <div class="ios-navigation-bar">
+                <a href="explore.html" class="ios-navigation-button ios-navigation-left ios-back-button">
+                    <i class="fas fa-chevron-left"></i>返回
                 </a>
-                <div class="status-bar-title">專家詳情</div>
+                <div class="ios-navigation-title">專家詳情</div>
+                <a href="#" class="ios-navigation-button ios-navigation-right">
+                    <i class="fas fa-share-alt"></i>
+                </a>
             </div>
             
             <!-- 內容區域 -->
-            <div class="content">
+            <div class="ios-content scroll-fix">
                 <!-- 專家頭部信息 -->
                 <div class="detail-header">
                     <img src="images/services/design.jpg" alt="封面" class="detail-cover">
@@ -49,7 +390,9 @@
                     </div>
                     
                     <!-- 預約按鈕 -->
-                    <button class="btn btn-full booking-button" data-expert-id="1">立即預約</button>
+                    <button class="btn btn-full booking-button" data-expert-id="1">
+                        <i class="fas fa-calendar-check" style="margin-right: 8px;"></i>立即預約
+                    </button>
                     
                     <!-- 關於我 -->
                     <div class="detail-section">
@@ -64,13 +407,13 @@
                         <div class="detail-section-title">專業技能</div>
                         <div class="detail-section-content">
                             <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 5px;">
-                                <span style="background: #f0f2f5; padding: 6px 12px; border-radius: 20px; font-size: 14px;">UI設計</span>
-                                <span style="background: #f0f2f5; padding: 6px 12px; border-radius: 20px; font-size: 14px;">UX設計</span>
-                                <span style="background: #f0f2f5; padding: 6px 12px; border-radius: 20px; font-size: 14px;">Figma</span>
-                                <span style="background: #f0f2f5; padding: 6px 12px; border-radius: 20px; font-size: 14px;">Sketch</span>
-                                <span style="background: #f0f2f5; padding: 6px 12px; border-radius: 20px; font-size: 14px;">Adobe XD</span>
-                                <span style="background: #f0f2f5; padding: 6px 12px; border-radius: 20px; font-size: 14px;">Prototyping</span>
-                                <span style="background: #f0f2f5; padding: 6px 12px; border-radius: 20px; font-size: 14px;">動效設計</span>
+                                <span class="skill-tag">UI設計</span>
+                                <span class="skill-tag">UX設計</span>
+                                <span class="skill-tag">Figma</span>
+                                <span class="skill-tag">Sketch</span>
+                                <span class="skill-tag">Adobe XD</span>
+                                <span class="skill-tag">Prototyping</span>
+                                <span class="skill-tag">動效設計</span>
                             </div>
                         </div>
                     </div>
@@ -80,16 +423,16 @@
                         <div class="detail-section-title">作品集</div>
                         <div class="work-samples">
                             <div class="work-sample">
-                                <img src="images/services/design.jpg" alt="作品1">
+                                <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="作品1">
                             </div>
                             <div class="work-sample">
-                                <img src="images/services/marketing.jpg" alt="作品2">
+                                <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="作品2">
                             </div>
                             <div class="work-sample">
-                                <img src="images/services/photo.jpg" alt="作品3">
+                                <img src="https://images.unsplash.com/photo-1618788372246-79faff0c3742?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="作品3">
                             </div>
                             <div class="work-sample">
-                                <img src="images/services/programming.jpg" alt="作品4">
+                                <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="作品4">
                             </div>
                         </div>
                     </div>
@@ -98,28 +441,22 @@
                     <div class="detail-section">
                         <div class="detail-section-title">服務項目</div>
                         <div style="margin-top: 10px;">
-                            <div style="display: flex; justify-content: space-between; padding: 12px; background: #f8f8fa; border-radius: 8px; margin-bottom: 10px;">
-                                <div>
-                                    <div style="font-weight: 600; color: #333;">基礎UI設計</div>
-                                    <div style="color: #666; font-size: 14px; margin-top: 3px;">5頁面UI設計，含簡單原型</div>
-                                </div>
-                                <div style="font-weight: 600; color: #1A7B8E;">$3,000</div>
+                            <div class="service-card">
+                                <div class="service-title">基礎UI設計</div>
+                                <div class="service-desc">5頁面UI設計，含簡單原型</div>
+                                <div class="service-price">NT$3,000</div>
                             </div>
                             
-                            <div style="display: flex; justify-content: space-between; padding: 12px; background: #f8f8fa; border-radius: 8px; margin-bottom: 10px;">
-                                <div>
-                                    <div style="font-weight: 600; color: #333;">完整APP設計</div>
-                                    <div style="color: #666; font-size: 14px; margin-top: 3px;">15+頁面設計，含可交互原型</div>
-                                </div>
-                                <div style="font-weight: 600; color: #1A7B8E;">$12,000</div>
+                            <div class="service-card">
+                                <div class="service-title">完整APP設計</div>
+                                <div class="service-desc">15+頁面設計，含可交互原型</div>
+                                <div class="service-price">NT$12,000</div>
                             </div>
                             
-                            <div style="display: flex; justify-content: space-between; padding: 12px; background: #f8f8fa; border-radius: 8px;">
-                                <div>
-                                    <div style="font-weight: 600; color: #333;">網站UI/UX設計</div>
-                                    <div style="color: #666; font-size: 14px; margin-top: 3px;">含桌面/移動端設計，響應式</div>
-                                </div>
-                                <div style="font-weight: 600; color: #1A7B8E;">$15,000</div>
+                            <div class="service-card">
+                                <div class="service-title">網站UI/UX設計</div>
+                                <div class="service-desc">含桌面/移動端設計，響應式</div>
+                                <div class="service-price">NT$15,000</div>
                             </div>
                         </div>
                     </div>
@@ -131,7 +468,7 @@
                             <!-- 評價1 -->
                             <div class="review-item">
                                 <div class="review-header">
-                                    <img src="images/avatars/avatar2.jpg" alt="用戶頭像" class="avatar" style="width: 40px; height: 40px;">
+                                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="用戶頭像" class="avatar" style="width: 40px; height: 40px;">
                                     <div class="review-user">
                                         <div class="review-name">林佳穎</div>
                                         <div class="review-date">2023-05-15</div>
@@ -152,7 +489,7 @@
                             <!-- 評價2 -->
                             <div class="review-item">
                                 <div class="review-header">
-                                    <img src="images/avatars/avatar3.jpg" alt="用戶頭像" class="avatar" style="width: 40px; height: 40px;">
+                                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="用戶頭像" class="avatar" style="width: 40px; height: 40px;">
                                     <div class="review-user">
                                         <div class="review-name">張志豪</div>
                                         <div class="review-date">2023-04-20</div>
@@ -173,7 +510,7 @@
                             <!-- 評價3 -->
                             <div class="review-item" style="border-bottom: none; margin-bottom: 0; padding-bottom: 0;">
                                 <div class="review-header">
-                                    <img src="images/avatars/avatar4.jpg" alt="用戶頭像" class="avatar" style="width: 40px; height: 40px;">
+                                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="用戶頭像" class="avatar" style="width: 40px; height: 40px;">
                                     <div class="review-user">
                                         <div class="review-name">王美玲</div>
                                         <div class="review-date">2023-03-10</div>
@@ -194,36 +531,44 @@
                     </div>
                     
                     <!-- 查看全部評價按鈕 -->
-                    <button class="btn btn-secondary btn-full" style="margin: 10px 0 20px;">查看全部評價</button>
+                    <button class="btn btn-secondary btn-full" style="margin: 10px 0 20px;">
+                        <i class="fas fa-comments" style="margin-right: 8px;"></i>查看全部評價
+                    </button>
                 </div>
+                
+                <!-- 浮動聯繫按鈕 -->
+                <a href="chat.html" class="floating-contact">
+                    <i class="fas fa-comment-dots fa-lg"></i>
+                </a>
             </div>
             
             <!-- 底部導航欄 -->
-            <div class="tab-bar">
-                <a href="index.html" class="tab-item">
-                    <i class="fas fa-home tab-icon"></i>
-                    <span>首頁</span>
+            <div class="ios-tab-bar">
+                <a href="home.html" class="ios-tab-item">
+                    <i class="fas fa-home ios-tab-icon"></i>
+                    <span class="ios-tab-label">首頁</span>
                 </a>
-                <a href="explore.html" class="tab-item">
-                    <i class="fas fa-compass tab-icon"></i>
-                    <span>探索</span>
+                <a href="explore.html" class="ios-tab-item active">
+                    <i class="fas fa-compass ios-tab-icon"></i>
+                    <span class="ios-tab-label">探索</span>
                 </a>
-                <a href="orders.html" class="tab-item">
-                    <i class="fas fa-clipboard-list tab-icon"></i>
-                    <span>訂單</span>
+                <a href="orders.html" class="ios-tab-item">
+                    <i class="fas fa-clipboard-list ios-tab-icon"></i>
+                    <span class="ios-tab-label">訂單</span>
                 </a>
-                <a href="messages.html" class="tab-item">
-                    <i class="fas fa-comment-alt tab-icon"></i>
-                    <span>訊息</span>
+                <a href="messages.html" class="ios-tab-item">
+                    <i class="fas fa-comments ios-tab-icon"></i>
+                    <span class="ios-tab-label">訊息</span>
                 </a>
-                <a href="profile.html" class="tab-item">
-                    <i class="fas fa-user tab-icon"></i>
-                    <span>我的</span>
+                <a href="profile.html" class="ios-tab-item">
+                    <i class="fas fa-user ios-tab-icon"></i>
+                    <span class="ios-tab-label">我的</span>
                 </a>
             </div>
         </div>
     </div>
     
     <script src="js/main.js"></script>
+    <script src="js/expert-detail.js"></script>
 </body>
 </html> 

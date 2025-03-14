@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>預約成功 - 專才</title>
+    <title>預約成功 - ProLink</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/ios-styles.css">
 </head>
 <body>
     <div class="iphone-frame">
         <div class="dynamic-island"></div>
         <div class="screen">
-            <!-- 頂部狀態欄 -->
-            <div class="status-bar">
-                <div class="status-bar-title">預約成功</div>
+            <!-- iOS 風格導航欄 -->
+            <div class="ios-navigation-bar">
+                <div class="ios-navigation-title">預約成功</div>
             </div>
             
             <!-- 內容區域 -->
-            <div class="content">
+            <div class="ios-content scroll-fix">
                 <div class="success-message">
                     <div class="success-icon">
                         <i class="fas fa-check-circle"></i>
@@ -51,31 +52,31 @@
                     
                     <!-- 按鈕區 -->
                     <a href="orders.html" class="btn btn-full" style="margin-bottom: 15px;">查看我的訂單</a>
-                    <a href="index.html" class="btn btn-secondary btn-full">返回首頁</a>
+                    <a href="home.html" class="btn btn-secondary btn-full">返回首頁</a>
                 </div>
             </div>
             
             <!-- 底部導航欄 -->
-            <div class="tab-bar">
-                <a href="index.html" class="tab-item">
-                    <i class="fas fa-home tab-icon"></i>
-                    <span>首頁</span>
+            <div class="ios-tab-bar">
+                <a href="home.html" class="ios-tab-item">
+                    <i class="fas fa-home ios-tab-icon"></i>
+                    <span class="ios-tab-label">首頁</span>
                 </a>
-                <a href="explore.html" class="tab-item">
-                    <i class="fas fa-compass tab-icon"></i>
-                    <span>探索</span>
+                <a href="explore.html" class="ios-tab-item">
+                    <i class="fas fa-compass ios-tab-icon"></i>
+                    <span class="ios-tab-label">探索</span>
                 </a>
-                <a href="orders.html" class="tab-item">
-                    <i class="fas fa-clipboard-list tab-icon"></i>
-                    <span>訂單</span>
+                <a href="orders.html" class="ios-tab-item active">
+                    <i class="fas fa-clipboard-list ios-tab-icon"></i>
+                    <span class="ios-tab-label">訂單</span>
                 </a>
-                <a href="messages.html" class="tab-item">
-                    <i class="fas fa-comment-alt tab-icon"></i>
-                    <span>訊息</span>
+                <a href="messages.html" class="ios-tab-item">
+                    <i class="fas fa-comments ios-tab-icon"></i>
+                    <span class="ios-tab-label">訊息</span>
                 </a>
-                <a href="profile.html" class="tab-item">
-                    <i class="fas fa-user tab-icon"></i>
-                    <span>我的</span>
+                <a href="profile.html" class="ios-tab-item">
+                    <i class="fas fa-user ios-tab-icon"></i>
+                    <span class="ios-tab-label">我的</span>
                 </a>
             </div>
         </div>

@@ -1,5 +1,5 @@
 /**
- * 專才平台 - 主要JavaScript文件
+ * ProLink平台 - 主要JavaScript文件
  * 包含所有頁面通用功能及交互邏輯
  */
 

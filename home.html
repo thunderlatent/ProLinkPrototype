@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首頁 - ProLink</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/ios-styles.css">
+</head>
+<body>
+    <div class="iphone-frame">
+        <div class="dynamic-island"></div>
+        <div class="screen">
+            <!-- iOS 風格導航欄 -->
+            <div class="ios-navigation-bar">
+                <div class="ios-navigation-title">ProLink</div>
+                <a href="#" class="ios-navigation-button ios-navigation-right">
+                    <i class="fas fa-bell"></i>
+                </a>
+            </div>
+            
+            <!-- 內容區域 -->
+            <div class="ios-content scroll-fix">
+                <!-- 搜尋欄 -->
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="搜尋專家或服務...">
+                </div>
+                
+                <!-- 類別快速選擇 -->
+                <div class="category-grid">
+                    <a href="explore.html?category=design" class="category-item">
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="設計開發" class="category-image">
+                        <div class="category-text">設計開發</div>
+                    </a>
+                    <a href="explore.html?category=photo" class="category-item">
+                        <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="攝影視頻" class="category-image">
+                        <div class="category-text">攝影視頻</div>
+                    </a>
+                    <a href="explore.html?category=translate" class="category-item">
+                        <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="翻譯寫作" class="category-image">
+                        <div class="category-text">翻譯寫作</div>
+                    </a>
+                    <a href="explore.html?category=marketing" class="category-item">
+                        <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="行銷策劃" class="category-image">
+                        <div class="category-text">行銷策劃</div>
+                    </a>
+                </div>
+                
+                <!-- 橫幅廣告 -->
+                <div class="card">
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="橫幅廣告" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+                
+                <!-- 熱門專家 -->
+                <div class="card">
+                    <h2 style="font-size: 20px; font-weight: 600; margin-bottom: 15px;">熱門專家</h2>
+                    <div class="expert-list">
+                        <div class="expert-item">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="專家頭像" class="avatar">
+                            <div class="expert-info">
+                                <div class="expert-name">王小明</div>
+                                <div class="expert-title">UI/UX 設計師</div>
+                                <div class="expert-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.9</span>
+                                </div>
+                                <div class="expert-price">NT$ 1,200/小時</div>
+                            </div>
+                        </div>
+                        <div class="expert-item">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="專家頭像" class="avatar">
+                            <div class="expert-info">
+                                <div class="expert-name">李小華</div>
+                                <div class="expert-title">攝影師</div>
+                                <div class="expert-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.8</span>
+                                </div>
+                                <div class="expert-price">NT$ 2,500/小時</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 底部導航欄 -->
+            <div class="ios-tab-bar">
+                <a href="home.html" class="ios-tab-item active">
+                    <i class="fas fa-home ios-tab-icon"></i>
+                    <span class="ios-tab-label">首頁</span>
+                </a>
+                <a href="explore.html" class="ios-tab-item">
+                    <i class="fas fa-compass ios-tab-icon"></i>
+                    <span class="ios-tab-label">探索</span>
+                </a>
+                <a href="orders.html" class="ios-tab-item">
+                    <i class="fas fa-clipboard-list ios-tab-icon"></i>
+                    <span class="ios-tab-label">訂單</span>
+                </a>
+                <a href="messages.html" class="ios-tab-item">
+                    <i class="fas fa-comments ios-tab-icon"></i>
+                    <span class="ios-tab-label">訊息</span>
+                </a>
+                <a href="profile.html" class="ios-tab-item">
+                    <i class="fas fa-user ios-tab-icon"></i>
+                    <span class="ios-tab-label">我的</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/main.js"></script>
+</body>
+</html> 

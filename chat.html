@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>聊天 - 專才</title>
+    <title>聊天 - ProLink</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/ios-styles.css">
     <style>
         .chat-area {
             padding: 10px 16px;
@@ -159,94 +160,105 @@
     <div class="iphone-frame">
         <div class="dynamic-island"></div>
         <div class="screen">
-            <!-- 頂部狀態欄 -->
-            <div class="status-bar">
-                <div class="status-bar-title">聊天</div>
+            <!-- iOS 風格導航欄 -->
+            <div class="ios-navigation-bar">
+                <a href="messages.html" class="ios-navigation-button ios-navigation-left ios-back-button">
+                    <i class="fas fa-chevron-left"></i>返回
+                </a>
+                <div class="ios-navigation-title">李明哲</div>
+                <a href="#" class="ios-navigation-button ios-navigation-right">
+                    <i class="fas fa-info-circle"></i>
+                </a>
             </div>
             
-            <!-- 聊天頭部 -->
-            <div class="chat-header">
-                <a href="messages.html" class="chat-back-btn">
-                    <i class="fas fa-chevron-left"></i>
-                </a>
-                <div class="chat-header-info">
-                    <img src="images/avatars/avatar1.jpg" alt="專家頭像" class="avatar-chat">
-                    <div>
-                        <div class="chat-header-name">李明哲</div>
-                        <div class="chat-header-status">線上</div>
+            <!-- 內容區域 -->
+            <div class="ios-content scroll-fix">
+                <!-- 聊天頭部 -->
+                <div class="chat-header">
+                    <div class="chat-user-info">
+                        <img src="images/avatars/avatar1.jpg" alt="專家頭像" class="avatar">
+                        <div>
+                            <div class="chat-user-name">李明哲</div>
+                            <div class="chat-user-status">在線</div>
+                        </div>
+                    </div>
+                    <div class="chat-actions">
+                        <a href="#" class="chat-action-btn">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                        <a href="#" class="chat-action-btn">
+                            <i class="fas fa-video"></i>
+                        </a>
                     </div>
                 </div>
-                <div style="width: 22px;"></div> <!-- 平衡左側返回按鈕的空間 -->
+                
+                <!-- 聊天區域 -->
+                <div class="chat-area">
+                    <!-- 日期分隔線 -->
+                    <div class="chat-date-divider">
+                        <span>今天</span>
+                    </div>
+                    
+                    <!-- 收到的消息 -->
+                    <div class="chat-bubble chat-received">
+                        您好！我已經收到您的預約需求，想跟您確認一下設計風格的偏好，是偏向簡約現代風，還是有其他特定風格的考量呢？
+                        <div class="chat-time">10:30</div>
+                    </div>
+                    
+                    <!-- 發送的消息 -->
+                    <div class="chat-bubble chat-sent">
+                        您好李設計師！我比較喜歡簡約但不失特色的風格，可以參考我之前傳給您的那些案例。主色調希望是藍色系的。
+                        <div class="chat-time">10:35</div>
+                    </div>
+                    
+                    <!-- 收到的消息 -->
+                    <div class="chat-bubble chat-received">
+                        明白了！藍色系簡約風格是很好的選擇。您提供的案例我已經看過了，可以進一步問一下，這個網站設計主要是用於什麼類型的業務呢？這樣我可以更好地把握整體的設計方向。
+                        <div class="chat-time">10:37</div>
+                    </div>
+                    
+                    <!-- 發送的消息 -->
+                    <div class="chat-bubble chat-sent">
+                        是一個提供專業服務的平台，類似於這個"專才"APP的網頁版。主要用戶是尋找專業人士提供服務的客戶，和提供專業服務的專家。
+                        <div class="chat-time">10:40</div>
+                    </div>
+                    
+                    <!-- 收到的消息 -->
+                    <div class="chat-bubble chat-received">
+                        了解了！這類平台的設計需要突出專業性與信任感，同時保持良好的用戶體驗，讓兩類用戶都能方便地使用。
+                        <div class="chat-time">10:42</div>
+                    </div>
+                    
+                    <!-- 收到的消息 -->
+                    <div class="chat-bubble chat-received">
+                        我會根據您提供的資訊和偏好，設計一個簡約但有特色的藍色系網站。初步構思是使用深藍色作為主色調，配以淺藍色和白色作為輔助色，確保整體視覺清晰且專業。
+                        <div class="chat-time">10:45</div>
+                    </div>
+                    
+                    <!-- 收到的消息 -->
+                    <div class="chat-bubble chat-received">
+                        預計三天內可以完成初稿，到時會先發給您看看，再根據您的反饋進行調整。這樣安排可以嗎？
+                        <div class="chat-time">10:47</div>
+                    </div>
+                    
+                    <!-- 發送的消息 -->
+                    <div class="chat-bubble chat-sent">
+                        聽起來很棒！三天時間完全可以，期待看到您的設計。如果有任何問題隨時可以聯繫我。謝謝您！
+                        <div class="chat-time">10:50</div>
+                    </div>
+                </div>
+                
+                <!-- 輸入區域 -->
+                <div class="chat-input-container">
+                    <div class="chat-attach-btn">
+                        <i class="fas fa-plus-circle"></i>
+                    </div>
+                    <input type="text" class="chat-input" placeholder="輸入訊息...">
+                    <button class="chat-send-btn">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
             </div>
-            
-            <!-- 聊天區域 -->
-            <div class="chat-area">
-                <!-- 日期分隔線 -->
-                <div class="chat-date-divider">
-                    <span>今天</span>
-                </div>
-                
-                <!-- 收到的消息 -->
-                <div class="chat-bubble chat-received">
-                    您好！我已經收到您的預約需求，想跟您確認一下設計風格的偏好，是偏向簡約現代風，還是有其他特定風格的考量呢？
-                    <div class="chat-time">10:30</div>
-                </div>
-                
-                <!-- 發送的消息 -->
-                <div class="chat-bubble chat-sent">
-                    您好李設計師！我比較喜歡簡約但不失特色的風格，可以參考我之前傳給您的那些案例。主色調希望是藍色系的。
-                    <div class="chat-time">10:35</div>
-                </div>
-                
-                <!-- 收到的消息 -->
-                <div class="chat-bubble chat-received">
-                    明白了！藍色系簡約風格是很好的選擇。您提供的案例我已經看過了，可以進一步問一下，這個網站設計主要是用於什麼類型的業務呢？這樣我可以更好地把握整體的設計方向。
-                    <div class="chat-time">10:37</div>
-                </div>
-                
-                <!-- 發送的消息 -->
-                <div class="chat-bubble chat-sent">
-                    是一個提供專業服務的平台，類似於這個"專才"APP的網頁版。主要用戶是尋找專業人士提供服務的客戶，和提供專業服務的專家。
-                    <div class="chat-time">10:40</div>
-                </div>
-                
-                <!-- 收到的消息 -->
-                <div class="chat-bubble chat-received">
-                    了解了！這類平台的設計需要突出專業性與信任感，同時保持良好的用戶體驗，讓兩類用戶都能方便地使用。
-                    <div class="chat-time">10:42</div>
-                </div>
-                
-                <!-- 收到的消息 -->
-                <div class="chat-bubble chat-received">
-                    我會根據您提供的資訊和偏好，設計一個簡約但有特色的藍色系網站。初步構思是使用深藍色作為主色調，配以淺藍色和白色作為輔助色，確保整體視覺清晰且專業。
-                    <div class="chat-time">10:45</div>
-                </div>
-                
-                <!-- 收到的消息 -->
-                <div class="chat-bubble chat-received">
-                    預計三天內可以完成初稿，到時會先發給您看看，再根據您的反饋進行調整。這樣安排可以嗎？
-                    <div class="chat-time">10:47</div>
-                </div>
-                
-                <!-- 發送的消息 -->
-                <div class="chat-bubble chat-sent">
-                    聽起來很棒！三天時間完全可以，期待看到您的設計。如果有任何問題隨時可以聯繫我。謝謝您！
-                    <div class="chat-time">10:50</div>
-                </div>
-            </div>
-            
-            <!-- 輸入區域 -->
-            <div class="chat-input-container">
-                <div class="chat-attach-btn">
-                    <i class="fas fa-plus-circle"></i>
-                </div>
-                <input type="text" class="chat-input" placeholder="輸入訊息...">
-                <button class="chat-send-btn">
-                    <i class="fas fa-paper-plane"></i>
-                </button>
-            </div>
-            
-            <!-- 底部導航欄 - 在聊天頁面隱藏 -->
         </div>
     </div>
     

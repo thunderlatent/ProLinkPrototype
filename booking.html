@@ -3,139 +3,420 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>預約服務 - 專才</title>
+    <title>預約服務 - ProLink</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/ios-styles.css">
+    <style>
+        .booking-form {
+            padding: 20px 16px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #000;
+            font-size: 15px;
+        }
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            background-color: #f9f9f9;
+            color: #000;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .form-control:focus {
+            border-color: #007AFF;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.2);
+        }
+        .form-select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 8.825L1.175 4 2.05 3.125 6 7.075 9.95 3.125 10.825 4 6 8.825z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            padding-right: 40px;
+        }
+        .date-time-selector {
+            display: flex;
+            gap: 10px;
+        }
+        .date-time-selector .form-control {
+            flex: 1;
+        }
+        .time-selector {
+            position: relative;
+        }
+        .time-display {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            background-color: #f9f9f9;
+            color: #000;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .time-display.active {
+            border-color: #007AFF;
+            box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.2);
+        }
+        .time-popup {
+            position: absolute;
+            top: calc(100% + 5px);
+            left: 0;
+            width: 100%;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            z-index: 100;
+            max-height: 250px;
+            overflow-y: auto;
+            display: none;
+        }
+        .time-popup.show {
+            display: block;
+        }
+        .time-option {
+            padding: 12px 15px;
+            border-bottom: 1px solid #f2f2f7;
+            font-size: 16px;
+            color: #000;
+            cursor: pointer;
+        }
+        .time-option:last-child {
+            border-bottom: none;
+        }
+        .time-option:hover, .time-option.selected {
+            background-color: #f2f2f7;
+        }
+        .service-details {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .service-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #000;
+        }
+        .service-price {
+            font-size: 16px;
+            color: #007AFF;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .service-description {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+        }
+        .expert-info {
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #f2f2f7;
+        }
+        .expert-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+            margin-right: 12px;
+            object-fit: cover;
+        }
+        .expert-name {
+            font-weight: 600;
+            font-size: 15px;
+            color: #000;
+        }
+        .expert-title {
+            font-size: 13px;
+            color: #8e8e93;
+        }
+        .booking-summary {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .summary-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #000;
+        }
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .summary-label {
+            font-size: 15px;
+            color: #666;
+        }
+        .summary-value {
+            font-size: 15px;
+            color: #000;
+            font-weight: 500;
+        }
+        .total-price {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 15px;
+            margin-top: 15px;
+            border-top: 1px solid #f2f2f7;
+        }
+        .total-label {
+            font-size: 16px;
+            font-weight: 600;
+            color: #000;
+        }
+        .total-value {
+            font-size: 18px;
+            font-weight: 600;
+            color: #007AFF;
+        }
+        .payment-methods {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .payment-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #000;
+        }
+        .payment-option {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #f2f2f7;
+        }
+        .payment-option:last-child {
+            border-bottom: none;
+        }
+        .payment-radio {
+            margin-right: 12px;
+        }
+        .payment-icon {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            color: #007AFF;
+            font-size: 18px;
+        }
+        .payment-label {
+            font-size: 16px;
+            color: #000;
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 90;
+            display: none;
+        }
+        .overlay.show {
+            display: block;
+        }
+    </style>
 </head>
 <body>
     <div class="iphone-frame">
         <div class="dynamic-island"></div>
         <div class="screen">
-            <!-- 頂部狀態欄 -->
-            <div class="status-bar">
-                <a href="javascript:history.back()" class="back-button">
-                    <i class="fas fa-chevron-left"></i>
+            <!-- iOS 風格導航欄 -->
+            <div class="ios-navigation-bar">
+                <a href="expert-detail.html" class="ios-navigation-button ios-navigation-left ios-back-button">
+                    <i class="fas fa-chevron-left"></i>返回
                 </a>
-                <div class="status-bar-title">預約服務</div>
+                <div class="ios-navigation-title">預約服務</div>
             </div>
             
             <!-- 內容區域 -->
-            <div class="content">
-                <!-- 專家簡介 -->
-                <div class="card" style="display: flex; align-items: center;">
-                    <img src="images/avatars/avatar1.jpg" alt="專家頭像" class="avatar">
-                    <div style="margin-left: 15px;">
-                        <div style="font-weight: 600; font-size: 16px;">李明哲</div>
-                        <div style="color: #666; font-size: 14px;">UI/UX 設計師</div>
-                        <div style="display: flex; align-items: center; color: #FF7E45; margin-top: 3px;">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                            <span style="margin-left: 5px; color: #666; font-size: 13px;">(4.5)</span>
+            <div class="ios-content scroll-fix">
+                <div class="booking-form">
+                    <!-- 服務詳情 -->
+                    <div class="service-details">
+                        <div class="service-title">網站UI/UX設計</div>
+                        <div class="service-price">NT$15,000起</div>
+                        <div class="service-description">
+                            提供完整的網站UI/UX設計服務，包含用戶研究、流程設計、界面設計和原型製作。
                         </div>
-                    </div>
-                </div>
-                
-                <!-- 預約表單 -->
-                <div class="card">
-                    <form id="booking-form" class="booking-form">
-                        <!-- 服務選擇 -->
-                        <div class="form-group">
-                            <label class="form-label">選擇服務</label>
-                            <select class="form-select">
-                                <option value="">請選擇服務項目</option>
-                                <option value="basic-ui">基礎UI設計 ($3,000)</option>
-                                <option value="complete-app">完整APP設計 ($12,000)</option>
-                                <option value="website">網站UI/UX設計 ($15,000)</option>
-                                <option value="custom">客製化服務 (報價)</option>
-                            </select>
-                        </div>
-                        
-                        <!-- 日期選擇 -->
-                        <div class="form-group">
-                            <label class="form-label">預約日期</label>
-                            <input type="date" class="form-input" min="2023-06-01" value="2023-06-10">
-                        </div>
-                        
-                        <!-- 時間選擇 -->
-                        <div class="form-group">
-                            <label class="form-label">選擇時段</label>
-                            <div class="time-slots">
-                                <div class="time-slot">9:00</div>
-                                <div class="time-slot">10:00</div>
-                                <div class="time-slot">11:00</div>
-                                <div class="time-slot">13:00</div>
-                                <div class="time-slot">14:00</div>
-                                <div class="time-slot">15:00</div>
-                                <div class="time-slot">16:00</div>
-                                <div class="time-slot">17:00</div>
+                        <div class="expert-info">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="專家頭像" class="expert-avatar">
+                            <div>
+                                <div class="expert-name">李明哲</div>
+                                <div class="expert-title">UI/UX 設計師</div>
                             </div>
                         </div>
-                        
-                        <!-- 需求說明 -->
-                        <div class="form-group">
-                            <label class="form-label">需求說明</label>
-                            <textarea class="form-input" style="height: 120px; resize: none;" placeholder="請詳細描述您的需求，如項目背景、設計風格偏好、參考案例等..."></textarea>
+                    </div>
+                    
+                    <!-- 預約表單 -->
+                    <div class="form-group">
+                        <label class="form-label">選擇服務類型</label>
+                        <select class="form-control form-select">
+                            <option>基礎UI設計</option>
+                            <option>完整UI/UX設計</option>
+                            <option>網站重新設計</option>
+                            <option>移動應用UI設計</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">選擇日期和時間</label>
+                        <div class="date-time-selector">
+                            <input type="date" class="form-control" value="2023-08-15">
+                            <div class="time-selector">
+                                <div class="time-display" id="timeDisplay">
+                                    <span id="selectedTime">14:00</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="time-popup" id="timePopup">
+                                    <div class="time-option selected" data-time="09:00">09:00</div>
+                                    <div class="time-option" data-time="10:00">10:00</div>
+                                    <div class="time-option" data-time="11:00">11:00</div>
+                                    <div class="time-option" data-time="13:00">13:00</div>
+                                    <div class="time-option" data-time="14:00">14:00</div>
+                                    <div class="time-option" data-time="15:00">15:00</div>
+                                    <div class="time-option" data-time="16:00">16:00</div>
+                                    <div class="time-option" data-time="17:00">17:00</div>
+                                </div>
+                            </div>
                         </div>
-                        
-                        <!-- 聯絡方式 -->
-                        <div class="form-group">
-                            <label class="form-label">聯絡電話</label>
-                            <input type="tel" class="form-input" placeholder="請輸入您的聯絡電話">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">備註</label>
+                        <textarea class="form-control" rows="4" placeholder="請輸入您的需求或其他備註..."></textarea>
+                    </div>
+                    
+                    <!-- 預約摘要 -->
+                    <div class="booking-summary">
+                        <div class="summary-title">預約摘要</div>
+                        <div class="summary-item">
+                            <div class="summary-label">服務類型</div>
+                            <div class="summary-value">基礎UI設計</div>
                         </div>
-                        
-                        <!-- 備註 -->
-                        <div class="form-group">
-                            <label class="form-label">備註（選填）</label>
-                            <input type="text" class="form-input" placeholder="如有其他需要說明的事項">
+                        <div class="summary-item">
+                            <div class="summary-label">預約日期</div>
+                            <div class="summary-value">2023年8月15日</div>
                         </div>
-                        
-                        <!-- 提交按鈕 -->
-                        <button type="submit" class="btn btn-full" style="margin-top: 20px;">確認預約</button>
-                    </form>
+                        <div class="summary-item">
+                            <div class="summary-label">預約時間</div>
+                            <div class="summary-value">14:00</div>
+                        </div>
+                        <div class="total-price">
+                            <div class="total-label">總價</div>
+                            <div class="total-value">NT$15,000</div>
+                        </div>
+                    </div>
+                    
+                    <!-- 支付方式 -->
+                    <div class="payment-methods">
+                        <div class="payment-title">選擇支付方式</div>
+                        <div class="payment-option">
+                            <input type="radio" name="payment" id="creditCard" class="payment-radio" checked>
+                            <div class="payment-icon">
+                                <i class="fas fa-credit-card"></i>
+                            </div>
+                            <label for="creditCard" class="payment-label">信用卡支付</label>
+                        </div>
+                        <div class="payment-option">
+                            <input type="radio" name="payment" id="linePay" class="payment-radio">
+                            <div class="payment-icon">
+                                <i class="fab fa-line"></i>
+                            </div>
+                            <label for="linePay" class="payment-label">LINE Pay</label>
+                        </div>
+                        <div class="payment-option">
+                            <input type="radio" name="payment" id="bankTransfer" class="payment-radio">
+                            <div class="payment-icon">
+                                <i class="fas fa-university"></i>
+                            </div>
+                            <label for="bankTransfer" class="payment-label">銀行轉帳</label>
+                        </div>
+                    </div>
+                    
+                    <!-- 提交按鈕 -->
+                    <a href="booking-success.html" class="btn btn-primary btn-full" style="margin-bottom: 30px;">確認預約</a>
                 </div>
-                
-                <!-- 注意事項 -->
-                <div class="card">
-                    <h3 style="margin-bottom: 10px; color: #333;">預約須知</h3>
-                    <ul style="padding-left: 20px; color: #666; font-size: 14px; line-height: 1.5;">
-                        <li>預約確認後，專家將與您聯繫確認詳細需求</li>
-                        <li>如需取消預約，請提前24小時通知</li>
-                        <li>首次諮詢時間約30-60分鐘</li>
-                        <li>項目報價將根據實際需求調整</li>
-                        <li>檔案交付格式請在諮詢時與專家確認</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <!-- 底部導航欄 -->
-            <div class="tab-bar">
-                <a href="index.html" class="tab-item">
-                    <i class="fas fa-home tab-icon"></i>
-                    <span>首頁</span>
-                </a>
-                <a href="explore.html" class="tab-item">
-                    <i class="fas fa-compass tab-icon"></i>
-                    <span>探索</span>
-                </a>
-                <a href="orders.html" class="tab-item">
-                    <i class="fas fa-clipboard-list tab-icon"></i>
-                    <span>訂單</span>
-                </a>
-                <a href="messages.html" class="tab-item">
-                    <i class="fas fa-comment-alt tab-icon"></i>
-                    <span>訊息</span>
-                </a>
-                <a href="profile.html" class="tab-item">
-                    <i class="fas fa-user tab-icon"></i>
-                    <span>我的</span>
-                </a>
             </div>
         </div>
     </div>
     
+    <!-- 背景遮罩 -->
+    <div class="overlay" id="overlay"></div>
+    
     <script src="js/main.js"></script>
+    <script>
+        // 時間選擇器功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const timeDisplay = document.getElementById('timeDisplay');
+            const timePopup = document.getElementById('timePopup');
+            const selectedTimeEl = document.getElementById('selectedTime');
+            const timeOptions = document.querySelectorAll('.time-option');
+            const overlay = document.getElementById('overlay');
+            
+            // 點擊時間顯示區域，顯示彈出選項
+            timeDisplay.addEventListener('click', function() {
+                timePopup.classList.toggle('show');
+                timeDisplay.classList.toggle('active');
+                overlay.classList.toggle('show');
+            });
+            
+            // 點擊遮罩關閉彈出選項
+            overlay.addEventListener('click', function() {
+                timePopup.classList.remove('show');
+                timeDisplay.classList.remove('active');
+                overlay.classList.remove('show');
+            });
+            
+            // 選擇時間選項
+            timeOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const time = this.getAttribute('data-time');
+                    selectedTimeEl.textContent = time;
+                    
+                    // 更新預約摘要中的時間
+                    document.querySelector('.summary-item:nth-child(3) .summary-value').textContent = time;
+                    
+                    // 移除之前選中的選項
+                    timeOptions.forEach(opt => opt.classList.remove('selected'));
+                    
+                    // 標記當前選中的選項
+                    this.classList.add('selected');
+                    
+                    // 關閉彈出選項
+                    timePopup.classList.remove('show');
+                    timeDisplay.classList.remove('active');
+                    overlay.classList.remove('show');
+                });
+            });
+        });
+    </script>
 </body>
 </html> 

@@ -3,21 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>探索 - 專才</title>
+    <title>探索 - ProLink</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/ios-styles.css">
     <style>
         .explore-header {
             padding-top: 15px;
             background-color: #f2f2f7;
             z-index: 5;
-            position: sticky;
-            top: 0;
         }
         .category-scroller {
             display: flex;
             overflow-x: auto;
-            padding: 15px 16px; /* 增加左右邊距 */
+            padding: 8px 16px; /* 減少上下填充 */
             margin: 5px 0 15px;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none; /* Firefox */
@@ -26,25 +25,31 @@
             display: none; /* Chrome, Safari, Edge */
         }
         .category-item {
-            min-width: 80px;
-            height: 80px;
-            margin-right: 12px;
-            border-radius: 12px; /* 更符合iOS圓角 */
+            min-width: 80px; /* 調整寬度為 80px */
+            height: 80px; /* 調整高度為 80px */
+            margin-right: 10px; /* 增加間距 */
+            border-radius: 12px; /* 調整圓角 */
             display: flex;
-            flex-direction: column;
+            flex-direction: column; /* 改回垂直排列 */
             align-items: center;
             justify-content: center;
-            background-color: #ffffff; /* 更淺的背景 */
+            background-color: #ffffff;
             color: #000;
-            font-size: 13px;
+            font-size: 12px; /* 增加字體大小 */
             text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* 更細緻的陰影 */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08); /* 調整陰影 */
             position: relative;
             overflow: hidden;
+            transition: transform 0.2s ease;
+            padding: 10px; /* 調整內邊距 */
+        }
+        .category-item:active {
+            transform: scale(0.95);
         }
         .category-item i {
-            font-size: 24px;
-            margin-bottom: 8px;
+            font-size: 24px; /* 增加圖標大小 */
+            margin-bottom: 8px; /* 增加底部間距 */
+            margin-right: 0; /* 移除右側間距 */
             color: #007AFF; /* iOS藍色 */
             position: relative;
             z-index: 2;
@@ -129,13 +134,16 @@
     <div class="iphone-frame">
         <div class="dynamic-island"></div>
         <div class="screen">
-            <!-- 頂部狀態欄 -->
-            <div class="status-bar">
-                <div class="status-bar-title">探索專家</div>
+            <!-- iOS 風格導航欄 -->
+            <div class="ios-navigation-bar">
+                <div class="ios-navigation-title">探索</div>
+                <a href="#" class="ios-navigation-button ios-navigation-right">
+                    <i class="fas fa-search"></i>
+                </a>
             </div>
             
             <!-- 內容區域 -->
-            <div class="content">
+            <div class="ios-content scroll-fix">
                 <div class="explore-header">
                     <!-- 搜尋欄 -->
                     <div class="search-bar">
@@ -146,10 +154,10 @@
                     <!-- 類別導航 -->
                     <h3 style="padding: 0 16px; margin: 15px 0 5px; font-size: 17px; color: #8e8e93;">服務類別</h3>
                     <div class="category-scroller">
-                        <a href="#" class="category-item active">
-                            <i class="fas fa-star"></i>
+                        <div class="category-item active" data-category="熱門">
+                            <i class="fas fa-fire"></i>
                             <div class="category-label">熱門</div>
-                        </a>
+                        </div>
                         <a href="#" class="category-item">
                             <i class="fas fa-laptop-code"></i>
                             <div class="category-label">設計開發</div>
@@ -192,7 +200,7 @@
                         <!-- 專家1 -->
                         <a href="expert-detail.html" style="text-decoration: none; color: inherit;">
                             <div class="expert-card">
-                                <img src="images/avatars/avatar1.jpg" alt="專家頭像" class="expert-img">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="專家頭像" class="expert-img">
                                 <div class="expert-info">
                                     <div class="expert-name">李明哲</div>
                                     <div class="expert-title">UI/UX 設計師</div>
@@ -208,7 +216,7 @@
                         <!-- 專家2 -->
                         <a href="expert-detail.html" style="text-decoration: none; color: inherit;">
                             <div class="expert-card">
-                                <img src="images/avatars/avatar2.jpg" alt="專家頭像" class="expert-img">
+                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="專家頭像" class="expert-img">
                                 <div class="expert-info">
                                     <div class="expert-name">林佳穎</div>
                                     <div class="expert-title">品牌設計師</div>
@@ -224,7 +232,7 @@
                         <!-- 專家3 -->
                         <a href="expert-detail.html" style="text-decoration: none; color: inherit;">
                             <div class="expert-card">
-                                <img src="images/avatars/avatar3.jpg" alt="專家頭像" class="expert-img">
+                                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="專家頭像" class="expert-img">
                                 <div class="expert-info">
                                     <div class="expert-name">張志豪</div>
                                     <div class="expert-title">攝影師</div>
@@ -240,7 +248,7 @@
                         <!-- 專家4 -->
                         <a href="expert-detail.html" style="text-decoration: none; color: inherit;">
                             <div class="expert-card">
-                                <img src="images/avatars/avatar4.jpg" alt="專家頭像" class="expert-img">
+                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="專家頭像" class="expert-img">
                                 <div class="expert-info">
                                     <div class="expert-name">王美玲</div>
                                     <div class="expert-title">英語教師</div>
@@ -248,76 +256,68 @@
                                         <i class="fas fa-star"></i>
                                         <span>4.6</span>
                                     </div>
-                                    <div class="expert-price">NT$800起/小時</div>
+                                    <div class="expert-price">NT$800/小時</div>
                                 </div>
                             </div>
                         </a>
                     </div>
                 </div>
                 
-                <!-- 近期熱門 -->
-                <h3 class="section-title">
-                    近期熱門服務
-                    <a href="#" class="view-all">查看全部 <i class="fas fa-chevron-right" style="font-size: 12px;"></i></a>
-                </h3>
-                
-                <div style="padding: 0 15px;">
-                    <!-- 服務1 -->
-                    <div style="background-color: #fff; border-radius: 10px; margin-bottom: 15px; padding: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                        <div style="display: flex; margin-bottom: 10px;">
-                            <img src="images/avatars/avatar5.jpg" alt="專家頭像" class="avatar">
-                            <div style="margin-left: 10px;">
-                                <div style="font-weight: 600; color: #333;">陳俊宏</div>
-                                <div style="font-size: 12px; color: #666;">網站開發專家</div>
-                            </div>
-                            <div style="margin-left: auto; font-size: 12px; color: #FF7E45;">
-                                <i class="fas fa-star"></i>
-                                <span>4.8</span>
-                            </div>
-                        </div>
-                        <div style="font-weight: 600; margin-bottom: 5px; color: #333;">
-                            快速架設專業形象網站，三天內完成基礎版本
-                        </div>
-                        <div style="font-size: 14px; color: #666; margin-bottom: 10px;">
-                            包含RWD響應式設計，SEO基礎優化，最適合創業者和個人專業形象打造
-                        </div>
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <div style="font-size: 12px; color: #888;">
-                                <i class="fas fa-clock"></i>
-                                <span>7天內交付</span>
-                            </div>
-                            <div style="font-weight: 600; color: #FF7E45;">
-                                NT$15,000起
-                            </div>
-                        </div>
+                <!-- 熱門服務 -->
+                <div>
+                    <div class="section-title">
+                        熱門服務
+                        <a href="#" class="view-all">查看全部 <i class="fas fa-chevron-right" style="font-size: smaller;"></i></a>
                     </div>
                     
-                    <!-- 服務2 -->
-                    <div style="background-color: #fff; border-radius: 10px; margin-bottom: 15px; padding: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                        <div style="display: flex; margin-bottom: 10px;">
-                            <img src="images/avatars/avatar6.jpg" alt="專家頭像" class="avatar">
-                            <div style="margin-left: 10px;">
-                                <div style="font-weight: 600; color: #333;">楊曉芬</div>
-                                <div style="font-size: 12px; color: #666;">行銷顧問</div>
+                    <div style="padding: 0 16px;">
+                        <!-- 服務1 -->
+                        <div style="background-color: #fff; border-radius: 12px; margin-bottom: 16px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                            <div style="padding: 16px; display: flex; align-items: center;">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="專家頭像" style="width: 40px; height: 40px; border-radius: 20px; margin-right: 12px;">
+                                <div>
+                                    <div style="font-weight: 600; font-size: 15px;">李明哲</div>
+                                    <div style="font-size: 13px; color: #8e8e93;">UI/UX 設計師</div>
+                                </div>
                             </div>
-                            <div style="margin-left: auto; font-size: 12px; color: #FF7E45;">
-                                <i class="fas fa-star"></i>
-                                <span>4.9</span>
+                            <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="服務圖片" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div style="padding: 16px;">
+                                <div style="font-weight: 600; font-size: 17px; margin-bottom: 8px;">網站UI/UX設計</div>
+                                <div style="font-size: 14px; color: #666; margin-bottom: 12px;">
+                                    提供完整的網站UI/UX設計服務，包含用戶研究、流程設計、界面設計和原型製作。
+                                </div>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div style="display: flex; align-items: center; font-size: 13px; color: #FF9500;">
+                                        <i class="fas fa-star"></i>
+                                        <span style="margin-left: 4px;">4.8 (126)</span>
+                                    </div>
+                                    <div style="font-size: 17px; font-weight: 600; color: #007AFF;">NT$15,000起</div>
+                                </div>
                             </div>
                         </div>
-                        <div style="font-weight: 600; margin-bottom: 5px; color: #333;">
-                            社群媒體行銷策略規劃與執行
-                        </div>
-                        <div style="font-size: 14px; color: #666; margin-bottom: 10px;">
-                            量身打造FB、IG、LinkedIn有效行銷策略，提高品牌曝光與粉絲互動率
-                        </div>
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <div style="font-size: 12px; color: #888;">
-                                <i class="fas fa-clock"></i>
-                                <span>14天內交付</span>
+                        
+                        <!-- 服務2 -->
+                        <div style="background-color: #fff; border-radius: 12px; margin-bottom: 16px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                            <div style="padding: 16px; display: flex; align-items: center;">
+                                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="專家頭像" style="width: 40px; height: 40px; border-radius: 20px; margin-right: 12px;">
+                                <div>
+                                    <div style="font-weight: 600; font-size: 15px;">張志豪</div>
+                                    <div style="font-size: 13px; color: #8e8e93;">攝影師</div>
+                                </div>
                             </div>
-                            <div style="font-weight: 600; color: #FF7E45;">
-                                NT$20,000起
+                            <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="服務圖片" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div style="padding: 16px;">
+                                <div style="font-weight: 600; font-size: 17px; margin-bottom: 8px;">商品攝影服務</div>
+                                <div style="font-size: 14px; color: #666; margin-bottom: 12px;">
+                                    專業商品攝影服務，適合電商平台、產品目錄等用途，提供高質量成品照片。
+                                </div>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div style="display: flex; align-items: center; font-size: 13px; color: #FF9500;">
+                                        <i class="fas fa-star"></i>
+                                        <span style="margin-left: 4px;">4.7 (98)</span>
+                                    </div>
+                                    <div style="font-size: 17px; font-weight: 600; color: #007AFF;">NT$2,500起</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -325,31 +325,608 @@
             </div>
             
             <!-- 底部導航欄 -->
-            <div class="tab-bar">
-                <a href="index.html" class="tab-item">
-                    <i class="fas fa-home tab-icon"></i>
-                    <span>首頁</span>
+            <div class="ios-tab-bar">
+                <a href="home.html" class="ios-tab-item">
+                    <i class="fas fa-home ios-tab-icon"></i>
+                    <span class="ios-tab-label">首頁</span>
                 </a>
-                <a href="explore.html" class="tab-item active">
-                    <i class="fas fa-compass tab-icon"></i>
-                    <span>探索</span>
+                <a href="explore.html" class="ios-tab-item active">
+                    <i class="fas fa-compass ios-tab-icon"></i>
+                    <span class="ios-tab-label">探索</span>
                 </a>
-                <a href="orders.html" class="tab-item">
-                    <i class="fas fa-clipboard-list tab-icon"></i>
-                    <span>訂單</span>
+                <a href="orders.html" class="ios-tab-item">
+                    <i class="fas fa-clipboard-list ios-tab-icon"></i>
+                    <span class="ios-tab-label">訂單</span>
                 </a>
-                <a href="messages.html" class="tab-item">
-                    <i class="fas fa-comment-alt tab-icon"></i>
-                    <span>訊息</span>
+                <a href="messages.html" class="ios-tab-item">
+                    <i class="fas fa-comments ios-tab-icon"></i>
+                    <span class="ios-tab-label">訊息</span>
                 </a>
-                <a href="profile.html" class="tab-item">
-                    <i class="fas fa-user tab-icon"></i>
-                    <span>我的</span>
+                <a href="profile.html" class="ios-tab-item">
+                    <i class="fas fa-user ios-tab-icon"></i>
+                    <span class="ios-tab-label">我的</span>
                 </a>
             </div>
         </div>
     </div>
     
     <script src="js/main.js"></script>
+    <script>
+        // 各類別的專家數據
+        const categoryExperts = {
+            '熱門': [
+                {
+                    img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    name: '李明哲',
+                    title: 'UI/UX 設計師',
+                    rating: '4.8',
+                    price: 'NT$3,000起'
+                },
+                {
+                    img: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    name: '林佳穎',
+                    title: '品牌設計師',
+                    rating: '4.9',
+                    price: 'NT$5,000起'
+                },
+                {
+                    img: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    name: '張志豪',
+                    title: '攝影師',
+                    rating: '4.7',
+                    price: 'NT$2,500起'
+                },
+                {
+                    img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    name: '王美玲',
+                    title: '英語教師',
+                    rating: '4.6',
+                    price: 'NT$800/小時'
+                }
+            ],
+            '設計開發': [
+                {
+                    img: 'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    name: '陳威廷',
+                    title: '全端工程師',
+                    rating: '4.9',
+                    price: 'NT$4,500起'
+                },
+                {
+                    img: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    name: '黃雅芳',
+                    title: '前端開發師',
+                    rating: '4.7',
+                    price: 'NT$3,800起'
+                },
+                {
+                    img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    name: '李明哲',
+                    title: 'UI/UX 設計師',
+                    rating: '4.8',
+                    price: 'NT$3,000起'
+                },
+                {
+                    img: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    name: '林書豪',
+                    title: 'iOS 開發師',
+                    rating: '4.6',
+                    price: 'NT$5,500起'
+                }
+            ],
+            '攝影視頻': [
+                {
+                    img: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    name: '張志豪',
+                    title: '攝影師',
+                    rating: '4.7',
+                    price: 'NT$2,500起'
+                },
+                {
+                    img: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    name: '王大明',
+                    title: '婚禮攝影師',
+                    rating: '4.9',
+                    price: 'NT$15,000起'
+                },
+                {
+                    img: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    name: '林小美',
+                    title: '影片剪輯師',
+                    rating: '4.8',
+                    price: 'NT$3,500起'
+                },
+                {
+                    img: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    name: '陳俊宇',
+                    title: '商業攝影師',
+                    rating: '4.6',
+                    price: 'NT$4,000起'
+                }
+            ],
+            '翻譯寫作': [
+                {
+                    img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    name: '王美玲',
+                    title: '英語教師',
+                    rating: '4.6',
+                    price: 'NT$800/小時'
+                },
+                {
+                    img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    name: '李大偉',
+                    title: '日語翻譯',
+                    rating: '4.8',
+                    price: 'NT$1,200/小時'
+                },
+                {
+                    img: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    name: '張雅琪',
+                    title: '內容寫手',
+                    rating: '4.7',
+                    price: 'NT$2,000起'
+                },
+                {
+                    img: 'https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    name: '林志明',
+                    title: '技術文檔寫手',
+                    rating: '4.5',
+                    price: 'NT$3,000起'
+                }
+            ],
+            '行銷策劃': [
+                {
+                    img: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    name: '陳建宏',
+                    title: '數位行銷專家',
+                    rating: '4.9',
+                    price: 'NT$6,000起'
+                },
+                {
+                    img: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    name: '林佳穎',
+                    title: '品牌設計師',
+                    rating: '4.9',
+                    price: 'NT$5,000起'
+                },
+                {
+                    img: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    name: '黃雅婷',
+                    title: '社群行銷專家',
+                    rating: '4.7',
+                    price: 'NT$4,500起'
+                },
+                {
+                    img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    name: '王志偉',
+                    title: 'SEO 專家',
+                    rating: '4.8',
+                    price: 'NT$5,500起'
+                }
+            ],
+            '教學輔導': [
+                {
+                    img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    name: '王美玲',
+                    title: '英語教師',
+                    rating: '4.6',
+                    price: 'NT$800/小時'
+                },
+                {
+                    img: 'https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    name: '張建國',
+                    title: '數學家教',
+                    rating: '4.8',
+                    price: 'NT$700/小時'
+                },
+                {
+                    img: 'https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    name: '林雅文',
+                    title: '鋼琴教師',
+                    rating: '4.9',
+                    price: 'NT$1,000/小時'
+                },
+                {
+                    img: 'https://images.unsplash.com/photo-1548449112-96a38a643324?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    name: '陳志明',
+                    title: '物理教師',
+                    rating: '4.7',
+                    price: 'NT$850/小時'
+                }
+            ],
+            '商業諮詢': [
+                {
+                    img: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    name: '陳建宏',
+                    title: '創業顧問',
+                    rating: '4.9',
+                    price: 'NT$6,000起'
+                },
+                {
+                    img: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    name: '林志玲',
+                    title: '財務顧問',
+                    rating: '4.8',
+                    price: 'NT$5,500起'
+                },
+                {
+                    img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    name: '王大明',
+                    title: '法律顧問',
+                    rating: '4.7',
+                    price: 'NT$3,000/小時'
+                },
+                {
+                    img: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    name: '張美玲',
+                    title: '人力資源顧問',
+                    rating: '4.6',
+                    price: 'NT$4,000起'
+                }
+            ],
+            '音樂制作': [
+                {
+                    img: 'https://images.unsplash.com/photo-1499996860823-5214fcc65f8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    name: '林志豪',
+                    title: '音樂製作人',
+                    rating: '4.9',
+                    price: 'NT$8,000起'
+                },
+                {
+                    img: 'https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    name: '陳大為',
+                    title: '混音工程師',
+                    rating: '4.8',
+                    price: 'NT$5,000起'
+                },
+                {
+                    img: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    name: '林佳穎',
+                    title: '作曲家',
+                    rating: '4.7',
+                    price: 'NT$6,000起'
+                },
+                {
+                    img: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    name: '王志明',
+                    title: '編曲師',
+                    rating: '4.6',
+                    price: 'NT$4,500起'
+                }
+            ]
+        };
+
+        // 各類別的熱門服務數據
+        const categoryServices = {
+            '熱門': [
+                {
+                    expertImg: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    expertName: '李明哲',
+                    expertTitle: 'UI/UX 設計師',
+                    serviceImg: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+                    serviceTitle: '網站UI/UX設計',
+                    serviceDesc: '提供完整的網站UI/UX設計服務，包含用戶研究、流程設計、界面設計和原型製作。',
+                    serviceRating: '4.8',
+                    serviceReviews: '126',
+                    servicePrice: 'NT$15,000起'
+                },
+                {
+                    expertImg: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    expertName: '張志豪',
+                    expertTitle: '攝影師',
+                    serviceImg: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+                    serviceTitle: '商品攝影服務',
+                    serviceDesc: '專業商品攝影服務，適合電商平台、產品目錄等用途，提供高質量成品照片。',
+                    serviceRating: '4.7',
+                    serviceReviews: '98',
+                    servicePrice: 'NT$2,500起'
+                }
+            ],
+            '設計開發': [
+                {
+                    expertImg: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    expertName: '李明哲',
+                    expertTitle: 'UI/UX 設計師',
+                    serviceImg: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+                    serviceTitle: '網站UI/UX設計',
+                    serviceDesc: '提供完整的網站UI/UX設計服務，包含用戶研究、流程設計、界面設計和原型製作。',
+                    serviceRating: '4.8',
+                    serviceReviews: '126',
+                    servicePrice: 'NT$15,000起'
+                },
+                {
+                    expertImg: 'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    expertName: '陳威廷',
+                    expertTitle: '全端工程師',
+                    serviceImg: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+                    serviceTitle: '網站全棧開發',
+                    serviceDesc: '從前端到後端的完整網站開發服務，包括資料庫設計、API開發、前端實現和部署。',
+                    serviceRating: '4.9',
+                    serviceReviews: '87',
+                    servicePrice: 'NT$30,000起'
+                }
+            ],
+            '攝影視頻': [
+                {
+                    expertImg: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    expertName: '張志豪',
+                    expertTitle: '攝影師',
+                    serviceImg: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+                    serviceTitle: '商品攝影服務',
+                    serviceDesc: '專業商品攝影服務，適合電商平台、產品目錄等用途，提供高質量成品照片。',
+                    serviceRating: '4.7',
+                    serviceReviews: '98',
+                    servicePrice: 'NT$2,500起'
+                },
+                {
+                    expertImg: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    expertName: '王大明',
+                    expertTitle: '婚禮攝影師',
+                    serviceImg: 'https://images.unsplash.com/photo-1537633552985-df8429e8048b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+                    serviceTitle: '婚禮全程攝影',
+                    serviceDesc: '提供婚禮全程攝影服務，從迎娶、儀式到宴客，捕捉每個珍貴時刻。',
+                    serviceRating: '4.9',
+                    serviceReviews: '156',
+                    servicePrice: 'NT$15,000起'
+                }
+            ],
+            '翻譯寫作': [
+                {
+                    expertImg: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    expertName: '王美玲',
+                    expertTitle: '英語教師',
+                    serviceImg: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+                    serviceTitle: '英文文件翻譯',
+                    serviceDesc: '提供專業的中英文件翻譯服務，包括商業文件、學術論文、網站內容等。',
+                    serviceRating: '4.6',
+                    serviceReviews: '78',
+                    servicePrice: 'NT$500/千字'
+                },
+                {
+                    expertImg: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    expertName: '張雅琪',
+                    expertTitle: '內容寫手',
+                    serviceImg: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+                    serviceTitle: '網站內容撰寫',
+                    serviceDesc: '專業網站內容撰寫服務，包括首頁文案、產品描述、部落格文章等，提升SEO效果。',
+                    serviceRating: '4.7',
+                    serviceReviews: '92',
+                    servicePrice: 'NT$2,000起'
+                }
+            ],
+            '行銷策劃': [
+                {
+                    expertImg: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    expertName: '陳建宏',
+                    expertTitle: '數位行銷專家',
+                    serviceImg: 'https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+                    serviceTitle: '社群媒體行銷',
+                    serviceDesc: '提供全方位社群媒體行銷服務，包括內容規劃、排程發布、社群互動和成效分析。',
+                    serviceRating: '4.9',
+                    serviceReviews: '134',
+                    servicePrice: 'NT$15,000/月'
+                },
+                {
+                    expertImg: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    expertName: '黃雅婷',
+                    expertTitle: '社群行銷專家',
+                    serviceImg: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+                    serviceTitle: 'Google廣告投放',
+                    serviceDesc: '專業Google廣告投放服務，包括關鍵字研究、廣告文案撰寫、競價管理和成效優化。',
+                    serviceRating: '4.7',
+                    serviceReviews: '86',
+                    servicePrice: 'NT$10,000/月'
+                }
+            ],
+            '教學輔導': [
+                {
+                    expertImg: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    expertName: '王美玲',
+                    expertTitle: '英語教師',
+                    serviceImg: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+                    serviceTitle: '商業英語課程',
+                    serviceDesc: '專為職場人士設計的商業英語課程，包括商務會話、簡報技巧、email寫作等實用內容。',
+                    serviceRating: '4.6',
+                    serviceReviews: '112',
+                    servicePrice: 'NT$800/小時'
+                },
+                {
+                    expertImg: 'https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    expertName: '張建國',
+                    expertTitle: '數學家教',
+                    serviceImg: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+                    serviceTitle: '高中數學輔導',
+                    serviceDesc: '針對高中數學課程的一對一輔導，包括代數、幾何、微積分等，提升學習成效和解題能力。',
+                    serviceRating: '4.8',
+                    serviceReviews: '95',
+                    servicePrice: 'NT$700/小時'
+                }
+            ],
+            '商業諮詢': [
+                {
+                    expertImg: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    expertName: '陳建宏',
+                    expertTitle: '創業顧問',
+                    serviceImg: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+                    serviceTitle: '創業諮詢服務',
+                    serviceDesc: '提供全方位創業諮詢服務，包括商業模式分析、市場調研、競爭策略和融資規劃等。',
+                    serviceRating: '4.9',
+                    serviceReviews: '78',
+                    servicePrice: 'NT$6,000起'
+                },
+                {
+                    expertImg: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    expertName: '林志玲',
+                    expertTitle: '財務顧問',
+                    serviceImg: 'https://images.unsplash.com/photo-1554224155-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+                    serviceTitle: '個人財務規劃',
+                    serviceDesc: '專業個人財務規劃服務，包括資產配置、投資建議、退休規劃和稅務優化等。',
+                    serviceRating: '4.8',
+                    serviceReviews: '65',
+                    servicePrice: 'NT$5,500起'
+                }
+            ],
+            '音樂制作': [
+                {
+                    expertImg: 'https://images.unsplash.com/photo-1499996860823-5214fcc65f8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    expertName: '林志豪',
+                    expertTitle: '音樂製作人',
+                    serviceImg: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+                    serviceTitle: '音樂製作與編曲',
+                    serviceDesc: '提供專業音樂製作與編曲服務，包括作曲、編曲、錄音和混音等，適合各類音樂風格。',
+                    serviceRating: '4.9',
+                    serviceReviews: '87',
+                    servicePrice: 'NT$8,000起'
+                },
+                {
+                    expertImg: 'https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+                    expertName: '陳大為',
+                    expertTitle: '混音工程師',
+                    serviceImg: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+                    serviceTitle: '專業混音服務',
+                    serviceDesc: '專業音樂混音服務，提升音樂作品的音質和層次感，讓您的音樂作品更具專業水準。',
+                    serviceRating: '4.8',
+                    serviceReviews: '76',
+                    servicePrice: 'NT$5,000起'
+                }
+            ]
+        };
+
+        // 更新專家列表的函數
+        function updateExpertGrid(category) {
+            const experts = categoryExperts[category] || categoryExperts['熱門'];
+            const expertGrid = document.querySelector('.expert-grid');
+            
+            // 清空現有內容
+            expertGrid.innerHTML = '';
+            
+            // 更新標題
+            document.querySelector('.section-title').innerHTML = 
+                `${category}專家 <a href="#" class="view-all">查看全部 <i class="fas fa-chevron-right" style="font-size: smaller;"></i></a>`;
+            
+            // 添加新專家卡片
+            experts.forEach((expert, index) => {
+                const expertCard = document.createElement('a');
+                expertCard.href = `expert-detail.html?category=${encodeURIComponent(category)}&index=${index}`;
+                expertCard.style.textDecoration = 'none';
+                expertCard.style.color = 'inherit';
+                
+                expertCard.innerHTML = `
+                    <div class="expert-card">
+                        <img src="${expert.img}" alt="專家頭像" class="expert-img">
+                        <div class="expert-info">
+                            <div class="expert-name">${expert.name}</div>
+                            <div class="expert-title">${expert.title}</div>
+                            <div class="expert-rating">
+                                <i class="fas fa-star"></i>
+                                <span>${expert.rating}</span>
+                            </div>
+                            <div class="expert-price">${expert.price}</div>
+                        </div>
+                    </div>
+                `;
+                
+                expertGrid.appendChild(expertCard);
+            });
+        }
+
+        // 更新熱門服務的函數
+        function updateServiceList(category) {
+            const services = categoryServices[category] || categoryServices['熱門'];
+            const serviceContainer = document.querySelector('.section-title').parentNode.nextElementSibling;
+            
+            // 清空現有內容
+            serviceContainer.innerHTML = '';
+            
+            // 更新標題
+            document.querySelectorAll('.section-title')[1].innerHTML = 
+                `${category}服務 <a href="#" class="view-all">查看全部 <i class="fas fa-chevron-right" style="font-size: smaller;"></i></a>`;
+            
+            // 添加新服務卡片
+            services.forEach(service => {
+                const serviceCard = document.createElement('div');
+                serviceCard.style.backgroundColor = '#fff';
+                serviceCard.style.borderRadius = '12px';
+                serviceCard.style.marginBottom = '16px';
+                serviceCard.style.overflow = 'hidden';
+                serviceCard.style.boxShadow = '0 2px 10px rgba(0,0,0,0.05)';
+                
+                serviceCard.innerHTML = `
+                    <div style="padding: 16px; display: flex; align-items: center;">
+                        <img src="${service.expertImg}" alt="專家頭像" style="width: 40px; height: 40px; border-radius: 20px; margin-right: 12px;">
+                        <div>
+                            <div style="font-weight: 600; font-size: 15px;">${service.expertName}</div>
+                            <div style="font-size: 13px; color: #8e8e93;">${service.expertTitle}</div>
+                        </div>
+                    </div>
+                    <img src="${service.serviceImg}" alt="服務圖片" style="width: 100%; height: 180px; object-fit: cover;">
+                    <div style="padding: 16px;">
+                        <div style="font-weight: 600; font-size: 17px; margin-bottom: 8px;">${service.serviceTitle}</div>
+                        <div style="font-size: 14px; color: #666; margin-bottom: 12px;">
+                            ${service.serviceDesc}
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div style="display: flex; align-items: center; font-size: 13px; color: #FF9500;">
+                                <i class="fas fa-star"></i>
+                                <span style="margin-left: 4px;">${service.serviceRating} (${service.serviceReviews})</span>
+                            </div>
+                            <div style="font-size: 17px; font-weight: 600; color: #007AFF;">${service.servicePrice}</div>
+                        </div>
+                    </div>
+                `;
+                
+                serviceContainer.appendChild(serviceCard);
+            });
+        }
+
+        // 添加點擊事件處理
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.category-item').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // 移除所有按鈕的 active 類
+                    document.querySelectorAll('.category-item').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    
+                    // 為當前按鈕添加 active 類
+                    this.classList.add('active');
+                    
+                    // 獲取類別名稱
+                    const category = this.querySelector('.category-label').textContent;
+                    console.log('選擇類別:', category);
+                    
+                    // 觸覺反饋
+                    if (navigator.vibrate) {
+                        navigator.vibrate(10);
+                    }
+                    
+                    // 模擬加載效果 - 專家列表
+                    const expertGrid = document.querySelector('.expert-grid');
+                    expertGrid.style.opacity = '0.6';
+                    
+                    // 模擬加載效果 - 服務列表
+                    const serviceContainer = document.querySelector('.section-title').parentNode.nextElementSibling;
+                    serviceContainer.style.opacity = '0.6';
+                    
+                    // 延遲更新，以顯示加載效果
+                    setTimeout(() => {
+                        // 更新專家列表
+                        updateExpertGrid(category);
+                        expertGrid.style.opacity = '1';
+                        
+                        // 更新服務列表
+                        updateServiceList(category);
+                        serviceContainer.style.opacity = '1';
+                    }, 300);
+                });
+            });
+            
+            // 初始化顯示熱門類別
+            updateExpertGrid('熱門');
+            updateServiceList('熱門');
+        });
+    </script>
 </body>
 </html> 
